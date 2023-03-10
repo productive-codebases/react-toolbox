@@ -21,8 +21,7 @@
     "react",
     "@typescript-eslint",
     "react-hooks",
-    "prettier",
-    "simple-import-sort"
+    "prettier"
   ],
   "rules": {
     "camelcase": "error",
@@ -35,8 +34,6 @@
     "react-hooks/exhaustive-deps": "off",
     "react/prop-types": 0,
     "react/display-name": 0,
-    "simple-import-sort/imports": "error",
-    "simple-import-sort/exports": "error",
     "@typescript-eslint/no-empty-function": "off",
     "react/no-unknown-property": "off",
     "react/no-unescaped-entities ": "off"

@@ -19,7 +19,7 @@
     "declarationMap": true,
     "baseUrl": ".",
     "paths": {
-      "productive-vite-react-library": ["src/component/index.ts"]
+      "react-toolbox": ["src/component/index.ts"]
     },
     "typeRoots": ["node_modules/@types", "src/component/index.d.ts"]
   },

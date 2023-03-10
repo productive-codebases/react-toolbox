@@ -1,31 +1,23 @@
-# Productive-vite-react-library
+# React Toolbox
 
-Reference and credits:
-https://articles.wesionary.team/react-component-library-with-vite-and-deploy-in-npm-579c2880d6ff
+A set of React components and helpers for productive codebases.
 
+## Installation
 
-## How to create a new library?
-
-- Fork the repo
-- Replace `productive-vite-react-library` everywhere by the name of your library.
-
-```bash
-npm ci
-npx husky install
+```
+npm i @productive-codebases/react-toolbox --save
 ```
 
-## Development
+## Exposed tooling
 
-```bash
-npm run :d
+### Functions
+
+#### `forwardProps`
+
+Allow to forward props to a component.
+
+Usage:
+
+```ts
+// TODO
 ```
-
-## Publish
-
-```bash
-npm run build
-npm version x.y.z
-npm publish
-```
-
-Do not forget library and packaging best practices! (CHANGELOG, semver, etc.)
