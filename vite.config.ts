@@ -13,7 +13,7 @@ const { EsLinter, linterPlugin } = EsLint
 export default defineConfig(configEnv => ({
   plugins: [
     dts({
-      include: ['src/component/']
+      include: ['src']
     }),
     react(),
     tsConfigPaths(),
@@ -24,7 +24,7 @@ export default defineConfig(configEnv => ({
   ],
   build: {
     lib: {
-      entry: resolve('src', 'component/index.ts'),
+      entry: resolve('src', 'index.ts'),
       name: 'ReactViteLibrary',
       formats: ['es', 'umd'],
       fileName: format => `react-toolbox.${format}.js`

@@ -19,9 +19,9 @@
     "declarationMap": true,
     "baseUrl": ".",
     "paths": {
-      "react-toolbox": ["src/component/index.ts"]
+      "@/*": ["*"]
     },
-    "typeRoots": ["node_modules/@types", "src/component/index.d.ts"]
+    "typeRoots": ["node_modules/@types"]
   },
   "include": ["src"],
   "references": [{ "path": "./tsconfig.node.json" }]
