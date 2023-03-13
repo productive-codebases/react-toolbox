@@ -25,7 +25,7 @@ export default defineConfig(configEnv => ({
   build: {
     lib: {
       entry: resolve('src', 'index.ts'),
-      name: 'ReactViteLibrary',
+      name: 'react-toolbox',
       formats: ['es', 'umd'],
       fileName: format => `react-toolbox.${format}.js`
     },
