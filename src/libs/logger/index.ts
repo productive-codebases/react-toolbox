@@ -1,8 +1,8 @@
 import { setupLogger } from '@productive-codebases/toolbox'
 
 const loggerMapping = {
-  components: {
-    ContainerFlex: 'ContainerFlex'
+  'react-toolbox': {
+    components: 'components'
   }
 }
 

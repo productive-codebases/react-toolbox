@@ -1,8 +1,10 @@
-import { Theme, themes } from 'src/styles/themes'
+import { newLogger } from 'src/libs/logger'
+import { themes } from 'src/styles/themes'
 import { ThemeProvider } from 'styled-components'
+import { IProviderContext, ProviderContext } from './context'
 
 export interface IProviderProps {
-  theme?: Theme
+  providerContext?: IProviderContext
   children: React.ReactNode
 }
 
@@ -10,7 +12,17 @@ export interface IProviderProps {
  * Main provider to use in your app to make components working properly.
  */
 export default function Provider(props: IProviderProps) {
-  const theme = props.theme ?? themes.default
+  const providerValue: IProviderContext = {
+    theme: props.providerContext?.theme ?? themes.default,
+    logger:
+      props.providerContext?.logger ?? newLogger('react-toolbox')('components')
+  }
 
-  return <ThemeProvider theme={theme}>{props.children}</ThemeProvider>
+  return (
+    <ProviderContext.Provider value={providerValue}>
+      <ThemeProvider theme={providerValue.theme}>
+        {props.children}
+      </ThemeProvider>
+    </ProviderContext.Provider>
+  )
 }

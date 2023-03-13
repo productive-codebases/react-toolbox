@@ -1,6 +1,6 @@
 import React from 'react'
+import { useLogger } from 'src/hooks/useLogger'
 import { forwardProps } from 'src/libs/forwardProps'
-import { newLogger } from 'src/libs/logger'
 import { buildVariants } from 'src/styles/buildVariants'
 import styled from 'styled-components'
 import {
@@ -12,9 +12,9 @@ import {
 } from './functions'
 import { IContainerFlexProps } from './types'
 
-const logger = newLogger('components')('ContainerFlex')
-
 const Div = styled.div<IContainerFlexProps>(props => {
+  const logger = useLogger()
+
   const styles = buildVariants(props)
     .css({
       // Flex
