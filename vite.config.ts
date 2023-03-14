@@ -32,5 +32,10 @@ export default defineConfig(configEnv => ({
     rollupOptions: {
       external: [...Object.keys(packageJson.peerDependencies)]
     }
+  },
+  test: {
+    globals: true,
+    environment: 'jsdom',
+    setupFiles: './tests/setup.ts'
   }
 }))
