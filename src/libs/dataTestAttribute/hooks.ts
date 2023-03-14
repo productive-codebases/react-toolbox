@@ -18,8 +18,8 @@ import {
 /**
  * Return the dataTestAttribute value used for accessibility and e2e testing.
  */
-export function getDataTestAttributeValue(
-  dataTestAttribute?: DataTestAttribute
+export function getDataTestAttributeValue<TRoles>(
+  dataTestAttribute?: DataTestAttribute<TRoles>
 ): string {
   if (!dataTestAttribute) {
     return ''
@@ -39,8 +39,8 @@ export function getDataTestAttributeValue(
 /**
  * Return the prop from the dataTestAttribute structure.
  */
-export function getDataTestAttributeProp(
-  dataTestAttribute: Perhaps<DataTestAttribute>,
+export function getDataTestAttributeProp<TRoles>(
+  dataTestAttribute: Perhaps<DataTestAttribute<TRoles>>,
   options?: IDataTestAttributeOptions
 ): DataTestAttributeProp {
   return filterNullOrUndefinedValues({

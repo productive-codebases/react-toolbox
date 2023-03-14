@@ -1,5 +1,5 @@
-import * as React from 'react'
 import ContainerFlex from 'src/components/ContainerFlex'
+import { getDataTestAttributeProp } from 'src/libs/dataTestAttribute/hooks'
 
 export interface IContainerFlexExamplesProps {}
 
@@ -14,8 +14,16 @@ export default function ContainerFlexExamples(
         flexGap="default"
         itemsDebug
       >
-        <div>Children 1</div>
+        <div
+          {...getDataTestAttributeProp({
+            role: 'container/title',
+            label: 'this-is-a-label'
+          })}
+        >
+          Children 1
+        </div>
         <div>Children 2</div>
+
         <div>Children 3</div>
       </ContainerFlex>
     </div>

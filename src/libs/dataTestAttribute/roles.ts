@@ -1,3 +1,11 @@
+/**
+ * Examples of based roles usabled for data test attributes.
+ *
+ * Usage:
+ *
+ * import { getDataTestAttributeProp as getDataTestAttributeProp_ } from '...
+ * const getDataTestAttributeProp = getDataTestAttributeProp<typeof roles>
+ */
 export const roles = {
   /* Tables / Lists */
 

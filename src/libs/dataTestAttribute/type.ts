@@ -1,8 +1,7 @@
 import { DATA_TEST_ATTRIBUTE } from '../forwardProps/constants'
-import { roles } from './roles'
 
-export interface IDataTestAttributeContext {
-  dataTestAttribute?: DataTestAttribute
+export interface IDataTestAttributeContext<TRoles> {
+  dataTestAttribute?: DataTestAttribute<TRoles>
   options?: IDataTestAttributeOptions
 }
 
@@ -15,9 +14,9 @@ export interface IDataTestAttributeOptions {
   debug?: boolean
 }
 
-export type DataTestAttribute = {
+export type DataTestAttribute<TRoles> = {
   // most relevant role to describe the attribute
-  role: keyof typeof roles
+  role: keyof TRoles
   // optional label to contextualize the attribute a bit more
   label?: string
   // optional identifier (id, key, etc.)

@@ -10,6 +10,16 @@ export { forwardProps } from './libs/forwardProps'
 export * from './libs/forwardProps/types'
 
 /**
+ * getDataTestAttributeProp
+ */
+
+export * from './libs/dataTestAttribute/DataTestAttributeContext'
+export * from './libs/dataTestAttribute/DataTestAttributeContextProvider'
+export * from './libs/dataTestAttribute/hooks'
+export * from './libs/dataTestAttribute/roles'
+export * from './libs/dataTestAttribute/type'
+
+/**
  * --- Components ---
  */
 
