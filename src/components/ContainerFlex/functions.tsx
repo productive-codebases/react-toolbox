@@ -1,5 +1,5 @@
+import { Theme } from '@/styles/themes'
 import { isDefined, Maybe } from '@productive-codebases/toolbox'
-import { Theme } from 'src/styles/themes'
 import { ContainerFlexSpace, IContainerFlexProps } from './types'
 
 /**

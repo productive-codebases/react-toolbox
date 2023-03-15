@@ -1,5 +1,5 @@
-import ContainerFlex from 'src/components/ContainerFlex'
-import { getDataTestAttributeProp } from 'src/libs/dataTestAttribute/hooks'
+import ContainerFlex from '@/components/ContainerFlex'
+import { getDataTestAttributeProp } from '@/libs/dataTestAttribute/hooks'
 
 export interface IContainerFlexExamplesProps {}
 

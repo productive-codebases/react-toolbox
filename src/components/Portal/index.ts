@@ -1,6 +1,6 @@
+import { useLogger } from '@/hooks/useLogger'
 import * as React from 'react'
 import * as ReactDOM from 'react-dom'
-import { useLogger } from 'src/hooks/useLogger'
 import { usePortal } from './usePortal'
 
 export interface IPlaceHolderPortalProps<TPlaceHolderName> {

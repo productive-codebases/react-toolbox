@@ -1,7 +1,7 @@
+import { useLogger } from '@/hooks/useLogger'
+import { forwardProps } from '@/libs/forwardProps'
+import { buildVariants } from '@/styles/buildVariants'
 import React from 'react'
-import { useLogger } from 'src/hooks/useLogger'
-import { forwardProps } from 'src/libs/forwardProps'
-import { buildVariants } from 'src/styles/buildVariants'
 import styled from 'styled-components'
 import {
   getContainerFlexWrap,

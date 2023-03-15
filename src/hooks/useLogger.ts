@@ -1,6 +1,6 @@
 import { Logger } from '@productive-codebases/toolbox'
 import { useContext } from 'react'
-import { ProviderContext } from 'src/components/Provider/context'
+import { ProviderContext } from '@/components/Provider/context'
 
 /**
  * Return the logger instance from the root store.

@@ -1,6 +1,6 @@
+import { IForwardedProps, ReactHTMLAttributes } from '@/libs/forwardProps/types'
+import { Theme } from '@/styles/themes'
 import { Maybe } from '@productive-codebases/toolbox'
-import { IForwardedProps, ReactHTMLAttributes } from 'src'
-import { Theme } from 'src/styles/themes'
 
 export type ContainerFlexSpace = keyof Theme['sizes']
 

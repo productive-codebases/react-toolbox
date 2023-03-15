@@ -1,5 +1,5 @@
 import { useMemo } from 'react'
-import Provider from 'src/components/Provider'
+import Provider from '@/components/Provider'
 import DataTestAttributeContext from './DataTestAttributeContext'
 import { IDataTestAttributeContext } from './type'
 

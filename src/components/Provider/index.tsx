@@ -1,5 +1,5 @@
-import { newLogger } from 'src/libs/logger'
-import { themes } from 'src/styles/themes'
+import { newLogger } from '@/libs/logger'
+import { themes } from '@/styles/themes'
 import { ThemeProvider } from 'styled-components'
 import { IProviderContext, ProviderContext } from './context'
 

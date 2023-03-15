@@ -1,7 +1,7 @@
-import ContainerFlex from 'src/components/ContainerFlex'
-import Portal from 'src/components/Portal'
-import PortalPlaceHolder from 'src/components/Portal/PortalPlaceHolder'
-import Provider from 'src/components/Provider'
+import ContainerFlex from '@/components/ContainerFlex'
+import Portal from '@/components/Portal'
+import PortalPlaceHolder from '@/components/Portal/PortalPlaceHolder'
+import Provider from '@/components/Provider'
 import ContainerFlexExamples from './ContainerFlexExamples'
 
 type PortalName = 'PortalExample1' | 'PortalExample2'

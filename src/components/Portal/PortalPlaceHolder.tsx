@@ -1,9 +1,6 @@
-import { useLogger } from 'src/hooks/useLogger'
-import { forwardProps } from 'src/libs/forwardProps'
-import {
-  IForwardedProps,
-  ReactHTMLAttributes
-} from 'src/libs/forwardProps/types'
+import { useLogger } from '@/hooks/useLogger'
+import { forwardProps } from '@/libs/forwardProps'
+import { IForwardedProps, ReactHTMLAttributes } from '@/libs/forwardProps/types'
 import { usePortalPlaceHolder } from './usePortal'
 
 interface IPortalPlaceHolderProps<TPlaceHolderName>
