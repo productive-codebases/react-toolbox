@@ -6,6 +6,7 @@ import { defineConfig } from 'vite'
 import dts from 'vite-plugin-dts'
 import EsLint from 'vite-plugin-linter'
 import tsConfigPaths from 'vite-tsconfig-paths'
+import * as path from 'path'
 
 import * as packageJson from './package.json'
 
@@ -24,6 +25,11 @@ export default defineConfig(configEnv => ({
       linters: [new EsLinter({ configEnv })]
     })
   ],
+  resolve: {
+    alias: {
+      '@': path.resolve(__dirname, './src')
+    }
+  },
   build: {
     lib: {
       entry: resolve('src', 'index.ts'),
