@@ -18,7 +18,7 @@ export default defineConfig(configEnv => ({
     dts({
       include: ['src']
     }),
-    react(),
+    react({ jsxRuntime: 'classic' }),
     tsConfigPaths(),
     linterPlugin({
       include: ['./src}/**/*.{ts,tsx}'],
@@ -31,6 +31,9 @@ export default defineConfig(configEnv => ({
     }
   },
   build: {
+    sourcemap: true,
+    outDir: 'dist',
+    manifest: true,
     lib: {
       entry: resolve('src', 'index.ts'),
       name: 'react-toolbox',
