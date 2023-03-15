@@ -3,7 +3,7 @@ import { themes } from '@/styles/themes'
 import { ThemeProvider } from 'styled-components'
 import { IProviderContext, ProviderContext } from './context'
 
-export interface IProviderProps {
+export interface IReactToolboxProviderProps {
   providerContext?: IProviderContext
   children: React.ReactNode
 }
@@ -11,7 +11,9 @@ export interface IProviderProps {
 /**
  * Main provider to use in your app to make components working properly.
  */
-export default function Provider(props: IProviderProps) {
+export default function ReactToolboxProvider(
+  props: IReactToolboxProviderProps
+) {
   const providerValue: IProviderContext = {
     theme: props.providerContext?.theme ?? themes.default,
     logger:

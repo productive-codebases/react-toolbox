@@ -1,5 +1,5 @@
+import ReactToolboxProvider from '@/components/ReactToolboxProvider'
 import { useMemo } from 'react'
-import Provider from '@/components/Provider'
 import DataTestAttributeContext from './DataTestAttributeContext'
 import { IDataTestAttributeContext } from './type'
 
@@ -15,10 +15,10 @@ export default function DataTestAttributeContextProvider<TRoles>(
   props: IDataTestAttributeContextProviderProps<TRoles>
 ) {
   return (
-    <Provider>
+    <ReactToolboxProvider>
       <DataTestAttributeContext.Provider value={useMemo(() => props.value, [])}>
         {props.children}
       </DataTestAttributeContext.Provider>
-    </Provider>
+    </ReactToolboxProvider>
   )
 }

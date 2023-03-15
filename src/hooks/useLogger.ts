@@ -1,16 +1,11 @@
 import { Logger } from '@productive-codebases/toolbox'
-import { useContext } from 'react'
-import { ProviderContext } from '@/components/Provider/context'
+import { useReactToolboxContext } from './useReactToolboxContext'
 
 /**
  * Return the logger instance from the root store.
  */
 export function useLogger(): Logger {
-  const context = useContext(ProviderContext)
-
-  if (!context) {
-    throw new Error('Missing ProviderContext context.')
-  }
+  const context = useReactToolboxContext()
 
   if (!context.logger) {
     throw new Error('No logger found in ProviderContext')

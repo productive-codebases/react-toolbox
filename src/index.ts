@@ -27,7 +27,7 @@ export * from './libs/dataTestAttribute/type'
  * Provider
  */
 
-export { default as Provider } from './components/Provider'
+export { default as ReactToolboxProvider } from './components/ReactToolboxProvider'
 
 /**
  * ContainerFlex
