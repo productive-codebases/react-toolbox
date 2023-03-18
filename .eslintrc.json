@@ -24,20 +24,21 @@
     "prettier"
   ],
   "rules": {
-    "camelcase": "error",
-    "no-duplicate-imports": "error",
     "@typescript-eslint/ban-ts-comment": "off",
-    "@typescript-eslint/no-explicit-any": "off",
-    "@typescript-eslint/no-empty-interface": "off",
-    "react/react-in-jsx-scope": "off",
-    "no-console": "error",
-    "no-alert": "error",
-    "react-hooks/exhaustive-deps": "off",
-    "react/prop-types": 0,
-    "react/display-name": 0,
+    "@typescript-eslint/ban-types": "off",
     "@typescript-eslint/no-empty-function": "off",
+    "@typescript-eslint/no-empty-interface": "off",
+    "@typescript-eslint/no-explicit-any": "off",
+    "camelcase": "error",
+    "no-alert": "error",
+    "no-console": "error",
+    "no-duplicate-imports": "error",
+    "react-hooks/exhaustive-deps": "off",
+    "react/display-name": 0,
+    "react/no-unescaped-entities ": "off",
     "react/no-unknown-property": "off",
-    "react/no-unescaped-entities ": "off"
+    "react/prop-types": 0,
+    "react/react-in-jsx-scope": "off"
   },
   "settings": {
     "import/resolver": {

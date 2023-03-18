@@ -1,12 +1,7 @@
-import { Theme } from '@/styles/themes'
-import { Logger, Maybe } from '@productive-codebases/toolbox'
+import { Maybe } from '@productive-codebases/toolbox'
 import * as React from 'react'
+import { IProviderContext } from './types'
 
-export interface IProviderContext {
-  logger?: Logger
-  theme?: Theme
-}
-
-const ProviderContext = React.createContext<Maybe<IProviderContext>>(null)
+const ProviderContext = React.createContext<Maybe<IProviderContext<any>>>(null)
 
 export { ProviderContext }

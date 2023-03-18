@@ -1,5 +1,5 @@
-import ContainerFlex from '@/components/ContainerFlex'
 import { getDataTestAttributeProp } from '@/libs/dataTestAttribute/hooks'
+import { AppContainerFlex } from '@/SampleApp/components/AppContainerFlex'
 
 export interface IContainerFlexExamplesProps {}
 
@@ -8,7 +8,7 @@ export default function ContainerFlexExamples(
 ) {
   return (
     <div>
-      <ContainerFlex
+      <AppContainerFlex
         name="Example1"
         flexDirection="column"
         flexGap="default"
@@ -25,7 +25,7 @@ export default function ContainerFlexExamples(
         <div>Children 2</div>
 
         <div>Children 3</div>
-      </ContainerFlex>
+      </AppContainerFlex>
     </div>
   )
 }

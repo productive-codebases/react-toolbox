@@ -1,19 +1,18 @@
 import { useLogger } from '@/hooks/useLogger'
+import { useTheme } from '@/hooks/useTheme'
 import { forwardProps } from '@/libs/forwardProps'
+import { filterNullOrUndefinedValues } from '@/libs/forwardProps/filterNullOrUndefinedValues'
 import { buildVariants } from '@/styles/buildVariants'
 import React from 'react'
 import styled from 'styled-components'
-import {
-  getContainerFlexWrap,
-  getLeftRightMargin,
-  getLeftRightPadding,
-  getTopBottomMargin,
-  getTopBottomPadding
-} from './functions'
+import { IProviderConfiguration } from '../ReactToolboxProvider/types'
 import { IContainerFlexProps } from './types'
 
-const Div = styled.div<IContainerFlexProps>(props => {
+const Div = styled.div<IContainerFlexProps<any>>(props_ => {
   const logger = useLogger()
+  const theme = useTheme()
+
+  const props = props_ as IContainerFlexProps<IProviderConfiguration>
 
   const styles = buildVariants(props)
     .css({
@@ -23,8 +22,18 @@ const Div = styled.div<IContainerFlexProps>(props => {
       flexDirection: props.flexDirection,
       alignItems: props.flexAlignItems,
       justifyContent: props.flexJustifyContent,
-      flexWrap: getContainerFlexWrap(props),
-      gap: props.flexGap && props.theme.sizes[props.flexGap],
+      flexWrap: (() => {
+        const isContainerFlexDirectionColumnOriented = /column/.test(
+          props.flexDirection || 'row'
+        )
+
+        if (isContainerFlexDirectionColumnOriented) {
+          return 'nowrap'
+        }
+
+        return props.flexWrap || 'wrap'
+      })(),
+      gap: props.flexGap && theme.sizes[props.flexGap],
       height: props.height,
 
       // Size
@@ -32,12 +41,26 @@ const Div = styled.div<IContainerFlexProps>(props => {
       ...(props.fullWidth ? { width: '100%' } : {}),
 
       // Paddings
-      ...getLeftRightPadding(props.theme, props.paddingH),
-      ...getTopBottomPadding(props.theme, props.paddingV),
+      ...filterNullOrUndefinedValues({
+        paddingLeft: props.paddingH && theme.sizes[props.paddingH],
+        paddingRight: props.paddingH && theme.sizes[props.paddingH]
+      }),
+
+      ...filterNullOrUndefinedValues({
+        paddingTop: props.paddingV && theme.sizes[props.paddingV],
+        paddingBottom: props.paddingV && theme.sizes[props.paddingV]
+      }),
 
       // Margins
-      ...getLeftRightMargin(props.theme, props.marginH),
-      ...getTopBottomMargin(props.theme, props.marginV)
+      ...filterNullOrUndefinedValues({
+        marginLeft: props.marginH && theme.sizes[props.marginH],
+        marginRight: props.marginV && theme.sizes[props.marginV]
+      }),
+
+      ...filterNullOrUndefinedValues({
+        marginTop: props.marginV && theme.sizes[props.marginV],
+        marginBottom: props.marginV && theme.sizes[props.marginV]
+      })
     })
 
     .variant('itemsDebug', props.itemsDebug, {
@@ -59,8 +82,8 @@ const Div = styled.div<IContainerFlexProps>(props => {
   return styles
 })
 
-function ContainerFlex(
-  props: IContainerFlexProps,
+function ContainerFlex<TProviderConfiguration extends IProviderConfiguration>(
+  props: IContainerFlexProps<TProviderConfiguration>,
   ref: React.ForwardedRef<HTMLDivElement>
 ) {
   return (

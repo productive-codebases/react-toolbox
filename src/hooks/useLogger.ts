@@ -2,7 +2,7 @@ import { Logger } from '@productive-codebases/toolbox'
 import { useReactToolboxContext } from './useReactToolboxContext'
 
 /**
- * Return the logger instance from the root store.
+ * Return logger from the Provider.
  */
 export function useLogger(): Logger {
   const context = useReactToolboxContext()
