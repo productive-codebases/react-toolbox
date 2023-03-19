@@ -20,6 +20,18 @@ export * from './libs/dataTestAttribute/roles'
 export * from './libs/dataTestAttribute/type'
 
 /**
+ * Logger
+ */
+
+export { useLogger } from './hooks/useLogger'
+
+/**
+ * Theme
+ */
+
+export { useTheme } from './hooks/useTheme'
+
+/**
  * --- Components ---
  */
 
