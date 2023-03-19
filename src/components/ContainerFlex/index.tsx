@@ -9,7 +9,9 @@ import { IProviderConfiguration } from '../ReactToolboxProvider/types'
 import { IContainerFlexProps } from './types'
 
 const Div = styled.div<IContainerFlexProps<any>>(props_ => {
-  const logger = useLogger()
+  const logger = useLogger().newLogger('ReactToolBox')(
+    'components/ContainerFlex'
+  )
   const theme = useTheme()
 
   const props = props_ as IContainerFlexProps<IProviderConfiguration>

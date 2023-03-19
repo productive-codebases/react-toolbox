@@ -1,15 +1,19 @@
+import { defaultLoggerMapping } from '@/libs/logger'
 import { Theme } from '@/styles/themes'
-import { Logger } from '@productive-codebases/toolbox'
+import { LoggerSetup } from '@productive-codebases/toolbox'
 
-export interface IProviderConfiguration<TLogger = Logger, TTheme = Theme> {
-  logger: TLogger
+export interface IProviderConfiguration<
+  TLoggerMapping extends object = typeof defaultLoggerMapping,
+  TTheme = Theme
+> {
+  loggerSetup: LoggerSetup<TLoggerMapping>
   theme: TTheme
 }
 
 export interface IProviderContext<
   TProviderConfiguration extends IProviderConfiguration
 > {
-  logger: TProviderConfiguration['logger']
+  loggerSetup: TProviderConfiguration['loggerSetup']
   theme: TProviderConfiguration['theme']
 }
 

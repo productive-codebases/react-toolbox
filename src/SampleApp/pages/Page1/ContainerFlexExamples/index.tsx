@@ -1,6 +1,6 @@
-import { useLogger } from '@/hooks/useLogger'
 import { getDataTestAttributeProp } from '@/libs/dataTestAttribute/hooks'
 import { ReactToolBox } from '@/SampleApp/components/ReactToolBox'
+import { useAppLogger } from '@/SampleApp/hooks/useAppLogger'
 import { useEffect, useRef } from 'react'
 
 export interface IContainerFlexExamplesProps {}
@@ -10,7 +10,7 @@ export default function ContainerFlexExamples(
 ) {
   const containerFlexRef = useRef<HTMLDivElement>(null)
 
-  const logger = useLogger()
+  const logger = useAppLogger().newLogger('SampleApp')('components')
 
   /**
    * Testing the passing of a ref

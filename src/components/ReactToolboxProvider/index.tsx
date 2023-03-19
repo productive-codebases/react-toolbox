@@ -1,12 +1,8 @@
-import { newLogger } from '@/libs/logger'
+import { appSetupLogger } from '@/SampleApp/libs/logger'
 import { themes } from '@/styles/themes'
 import { ThemeProvider } from 'styled-components'
 import { ProviderContext } from './context'
-import {
-  IProviderConfiguration,
-  IProviderContext,
-  IReactToolboxProviderProps
-} from './types'
+import { IProviderConfiguration, IReactToolboxProviderProps } from './types'
 
 /**
  * Main provider to use in your app to make components working properly.
@@ -14,10 +10,9 @@ import {
 export default function ReactToolboxProvider<
   TProviderConfiguration extends IProviderConfiguration
 >(props: IReactToolboxProviderProps<TProviderConfiguration>) {
-  const providerValue: IProviderContext<TProviderConfiguration> = {
+  const providerValue = {
     theme: props.configuration?.theme ?? themes.default,
-    logger:
-      props.configuration?.logger ?? newLogger('react-toolbox')('components')
+    loggerSetup: props.configuration?.loggerSetup ?? appSetupLogger
   }
 
   return (

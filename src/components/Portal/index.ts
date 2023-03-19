@@ -18,9 +18,8 @@ export interface IPlaceHolderPortalProps<TPlaceHolderName> {
 function Portal<TPlaceHolderName>(
   props: IPlaceHolderPortalProps<TPlaceHolderName>
 ) {
+  const logger = useLogger().newLogger('ReactToolBox')('components/Portal')
   const { portalUid, placeHolderPortalIds } = usePortal(props.name)
-
-  const logger = useLogger()
 
   const childNode = React.useMemo(() => document.createElement('div'), [])
 

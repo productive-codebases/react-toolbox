@@ -1,15 +1,17 @@
-import { Logger } from '@productive-codebases/toolbox'
+import { IProviderConfiguration } from '@/components/ReactToolboxProvider/types'
 import { useReactToolboxContext } from './useReactToolboxContext'
 
 /**
  * Return logger from the Provider.
  */
-export function useLogger(): Logger {
+export function useLogger<
+  TProviderConfiguration extends IProviderConfiguration
+>(): TProviderConfiguration['loggerSetup'] {
   const context = useReactToolboxContext()
 
-  if (!context.logger) {
+  if (!context.loggerSetup) {
     throw new Error('No logger found in ProviderContext')
   }
 
-  return context.logger
+  return context.loggerSetup
 }

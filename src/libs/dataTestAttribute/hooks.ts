@@ -56,7 +56,9 @@ export function getDataTestAttributeProp<TRoles>(
 export function useDataTestAttributeProp(
   options?: IDataTestAttributeOptions
 ): DataTestAttributeProp {
-  const logger = useLogger()
+  const logger = useLogger().newLogger('ReactToolBox')(
+    'libs/useDataTestAttributeProp'
+  )
   const dataTestAttributeContext = useContext(DataTestAttributeContext)
 
   // Memo the labelled value to not have to compute it again and to keep it
