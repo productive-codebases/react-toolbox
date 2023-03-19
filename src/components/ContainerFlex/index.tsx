@@ -83,13 +83,15 @@ const Div = styled.div<IContainerFlexProps<any>>(props_ => {
 })
 
 function ContainerFlex<TProviderConfiguration extends IProviderConfiguration>(
-  props: IContainerFlexProps<TProviderConfiguration>,
-  ref: React.ForwardedRef<HTMLDivElement>
+  props: IContainerFlexProps<TProviderConfiguration> & {
+    // Expose a ref as an explicit prop to workaround React.forwardRef that doesn't work with generics
+    containerRef?: React.ForwardedRef<HTMLDivElement>
+  }
 ) {
   return (
     <Div
       data-attr-name={props.name}
-      ref={ref}
+      ref={props.containerRef}
       name={props.name}
       flexGrow={props.flexGrow}
       flexDirection={props.flexDirection}
@@ -112,4 +114,4 @@ function ContainerFlex<TProviderConfiguration extends IProviderConfiguration>(
   )
 }
 
-export default React.forwardRef(ContainerFlex)
+export default ContainerFlex
