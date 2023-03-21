@@ -8,7 +8,7 @@ import {
 import { useContext, useMemo } from 'react'
 import { DATA_TEST_ATTRIBUTE } from '../forwardProps/constants'
 import { filterNullOrUndefinedValues } from '../forwardProps/filterNullOrUndefinedValues'
-import DataTestAttributeContext from './DataTestAttributeContext'
+import { DataTestAttributeContext } from './DataTestAttributeContext'
 import {
   DataTestAttribute,
   DataTestAttributeProp,

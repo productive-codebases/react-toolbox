@@ -1,16 +1,16 @@
 import { getDataTestAttributeProp } from '@/libs/dataTestAttribute/hooks'
-import { ReactToolBox } from '@/SampleApp/components/ReactToolBox'
-import { useAppLogger } from '@/SampleApp/hooks/useAppLogger'
+import { ReactToolboxComponents } from '@/SampleApp/components'
+import { reactToolboxHooks } from '@/SampleApp/hooks'
 import { useEffect, useRef } from 'react'
 
 export interface IContainerFlexExamplesProps {}
 
-export default function ContainerFlexExamples(
-  props: IContainerFlexExamplesProps
-) {
+export function ContainerFlexExamples(props: IContainerFlexExamplesProps) {
   const containerFlexRef = useRef<HTMLDivElement>(null)
 
-  const logger = useAppLogger().newLogger('SampleApp')('components')
+  const logger = reactToolboxHooks.useLogger().newLogger('SampleApp')(
+    'components'
+  )
 
   /**
    * Testing the passing of a ref
@@ -27,7 +27,7 @@ export default function ContainerFlexExamples(
   }, [containerFlexRef])
 
   return (
-    <ReactToolBox.ContainerFlex
+    <ReactToolboxComponents.ContainerFlex
       containerRef={containerFlexRef}
       name="Example1"
       flexDirection="column"
@@ -45,6 +45,6 @@ export default function ContainerFlexExamples(
       <div>Children 2</div>
 
       <div>Children 3</div>
-    </ReactToolBox.ContainerFlex>
+    </ReactToolboxComponents.ContainerFlex>
   )
 }

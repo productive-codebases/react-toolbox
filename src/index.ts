@@ -20,37 +20,15 @@ export * from './libs/dataTestAttribute/roles'
 export * from './libs/dataTestAttribute/type'
 
 /**
- * Logger
+ * Hooks
  */
 
-export { useLogger } from './hooks/useLogger'
-
-/**
- * Theme
- */
-
-export { useTheme } from './hooks/useTheme'
+export { configureReactToolboxHooks } from './hooks/configureReactToolboxHooks'
 
 /**
  * --- Components ---
  */
 
-/**
- * Provider
- */
+export { configureReactToolboxComponents } from './components/configureReactToolboxComponents'
 
-export { default as ReactToolboxProvider } from './components/ReactToolboxProvider'
-
-/**
- * ContainerFlex
- */
-
-export { default as ContainerFlex } from './components/ContainerFlex'
 export type { IContainerFlexProps } from './components/ContainerFlex/types'
-
-/**
- * Portal
- */
-
-export { default as Portal } from './components/Portal'
-export { default as PortalPlaceHolder } from './components/Portal/PortalPlaceHolder'

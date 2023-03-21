@@ -5,8 +5,8 @@
 import { render, screen, waitFor } from '@testing-library/react'
 import { forwardProps } from '../../forwardProps'
 import { IForwardedProps } from '../../forwardProps/types'
+import { DataTestAttributeContextProvider } from '../DataTestAttributeContextProvider'
 import { useDataTestAttributeProp } from '../hooks'
-import DataTestAttributeContextProvider from '../DataTestAttributeContextProvider'
 
 interface IContainerProps extends IForwardedProps<HTMLDivElement> {
   children: React.ReactNode

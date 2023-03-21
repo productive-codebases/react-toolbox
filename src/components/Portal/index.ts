@@ -15,7 +15,7 @@ export interface IPlaceHolderPortalProps<TPlaceHolderName> {
  *
  * Return the portal object.
  */
-function Portal<TPlaceHolderName>(
+export function Portal<TPlaceHolderName>(
   props: IPlaceHolderPortalProps<TPlaceHolderName>
 ) {
   const logger = useLogger().newLogger('ReactToolBox')('components/Portal')
@@ -46,5 +46,3 @@ function Portal<TPlaceHolderName>(
 
   return ReactDOM.createPortal(props.children, childNode)
 }
-
-export default Portal

@@ -84,7 +84,9 @@ const Div = styled.div<IContainerFlexProps<any>>(props_ => {
   return styles
 })
 
-function ContainerFlex<TProviderConfiguration extends IProviderConfiguration>(
+export function ContainerFlex<
+  TProviderConfiguration extends IProviderConfiguration
+>(
   props: IContainerFlexProps<TProviderConfiguration> & {
     // Expose a ref as an explicit prop to workaround React.forwardRef that doesn't work with generics
     containerRef?: React.ForwardedRef<HTMLDivElement>
@@ -115,5 +117,3 @@ function ContainerFlex<TProviderConfiguration extends IProviderConfiguration>(
     </Div>
   )
 }
-
-export default ContainerFlex

@@ -7,7 +7,7 @@ import { IProviderConfiguration, IReactToolboxProviderProps } from './types'
 /**
  * Main provider to use in your app to make components working properly.
  */
-export default function ReactToolboxProvider<
+export function ReactToolboxProvider<
   TProviderConfiguration extends IProviderConfiguration
 >(props: IReactToolboxProviderProps<TProviderConfiguration>) {
   const providerValue = {

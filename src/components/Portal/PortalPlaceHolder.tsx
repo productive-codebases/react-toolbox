@@ -1,6 +1,6 @@
+import { useLogger } from '@/hooks/useLogger'
 import { forwardProps } from '@/libs/forwardProps'
 import { IForwardedProps, ReactHTMLAttributes } from '@/libs/forwardProps/types'
-import { useAppLogger } from '@/SampleApp/hooks/useAppLogger'
 import { usePortalPlaceHolder } from './usePortal'
 
 interface IPortalPlaceHolderProps<TPlaceHolderName>
@@ -9,12 +9,14 @@ interface IPortalPlaceHolderProps<TPlaceHolderName>
   debug?: boolean
 }
 
-function PortalPlaceHolder<TPlaceHolderName>(
+export function PortalPlaceHolder<TPlaceHolderName>(
   props: IPortalPlaceHolderProps<TPlaceHolderName>
 ) {
   const { portalUid } = usePortalPlaceHolder(props.name)
 
-  const logger = useAppLogger().newLogger('SampleApp')('components')
+  const logger = useLogger().newLogger('ReactToolBox')(
+    'components/PortalPlaceHolder'
+  )
 
   if (props.debug) {
     logger('debug')(
@@ -30,5 +32,3 @@ function PortalPlaceHolder<TPlaceHolderName>(
     />
   )
 }
-
-export default PortalPlaceHolder

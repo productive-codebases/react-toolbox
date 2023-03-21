@@ -1,6 +1,6 @@
-import ReactToolboxProvider from '@/components/ReactToolboxProvider'
+import { ReactToolboxProvider } from '@/components/ReactToolboxProvider'
 import { useMemo } from 'react'
-import DataTestAttributeContext from './DataTestAttributeContext'
+import { DataTestAttributeContext } from './DataTestAttributeContext'
 import { IDataTestAttributeContext } from './type'
 
 export interface IDataTestAttributeContextProviderProps<TRoles> {
@@ -11,7 +11,7 @@ export interface IDataTestAttributeContextProviderProps<TRoles> {
 /**
  * Allow to define a DataTestAttributeContext.Provider easily.
  */
-export default function DataTestAttributeContextProvider<TRoles>(
+export function DataTestAttributeContextProvider<TRoles>(
   props: IDataTestAttributeContextProviderProps<TRoles>
 ) {
   return (
