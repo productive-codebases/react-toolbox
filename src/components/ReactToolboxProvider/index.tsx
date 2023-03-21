@@ -10,14 +10,15 @@ import { IProviderConfiguration, IReactToolboxProviderProps } from './types'
 export function ReactToolboxProvider<
   TProviderConfiguration extends IProviderConfiguration
 >(props: IReactToolboxProviderProps<TProviderConfiguration>) {
-  const providerValue = {
+  const providerConfiguration: IProviderConfiguration = {
     theme: props.configuration?.theme ?? themes.default,
-    loggerSetup: props.configuration?.loggerSetup ?? appSetupLogger
+    loggerSetup: props.configuration?.loggerSetup ?? appSetupLogger,
+    portalNames: ['default']
   }
 
   return (
-    <ProviderContext.Provider value={providerValue}>
-      <ThemeProvider theme={providerValue.theme}>
+    <ProviderContext.Provider value={providerConfiguration}>
+      <ThemeProvider theme={providerConfiguration.theme}>
         {props.children}
       </ThemeProvider>
     </ProviderContext.Provider>

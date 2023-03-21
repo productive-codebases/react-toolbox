@@ -1,10 +1,13 @@
 import { useLogger } from '@/hooks/useLogger'
 import * as React from 'react'
 import * as ReactDOM from 'react-dom'
+import { IProviderConfiguration } from '../ReactToolboxProvider/types'
 import { usePortal } from './usePortal'
 
-export interface IPlaceHolderPortalProps<TPlaceHolderName> {
-  name: TPlaceHolderName
+export interface IPlaceHolderPortalProps<
+  TProviderConfiguration extends IProviderConfiguration
+> {
+  name: keyof TProviderConfiguration['portalNames']
   debug?: boolean
   children?: React.ReactNode
 }
@@ -15,8 +18,8 @@ export interface IPlaceHolderPortalProps<TPlaceHolderName> {
  *
  * Return the portal object.
  */
-export function Portal<TPlaceHolderName>(
-  props: IPlaceHolderPortalProps<TPlaceHolderName>
+export function Portal<TProviderConfiguration extends IProviderConfiguration>(
+  props: IPlaceHolderPortalProps<TProviderConfiguration>
 ) {
   const logger = useLogger().newLogger('ReactToolBox')('components/Portal')
   const { portalUid, placeHolderPortalIds } = usePortal(props.name)
@@ -39,7 +42,9 @@ export function Portal<TPlaceHolderName>(
 
   if (props.debug) {
     logger('debug')(
-      `[Portal] Portal named "${props.name}" is looking for a container with id "${portalUid}"`,
+      `[Portal] Portal named "${String(
+        props.name
+      )}" is looking for a container with id "${portalUid}"`,
       placeHolderPortalIds
     )
   }

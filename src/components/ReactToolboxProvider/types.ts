@@ -4,10 +4,12 @@ import { LoggerSetup } from '@productive-codebases/toolbox'
 
 export interface IProviderConfiguration<
   TLoggerMapping extends object = typeof defaultLoggerMapping,
-  TTheme = Theme
+  TTheme = Theme,
+  TPortalNames = {}
 > {
   loggerSetup: LoggerSetup<TLoggerMapping>
   theme: TTheme
+  portalNames: TPortalNames
 }
 
 export interface IProviderContext<
@@ -15,6 +17,7 @@ export interface IProviderContext<
 > {
   loggerSetup: TProviderConfiguration['loggerSetup']
   theme: TProviderConfiguration['theme']
+  portalNames: TProviderConfiguration['portalNames']
 }
 
 export interface IReactToolboxProviderProps<

@@ -3,6 +3,7 @@ import {
   removeSetValueToMap
 } from '@productive-codebases/toolbox'
 import * as React from 'react'
+import { IProviderConfiguration } from '../ReactToolboxProvider/types'
 import { IPlaceHolder, PlaceHolderIds } from './types'
 
 const placeHolderPortalIds: PlaceHolderIds<string> = new Map()
@@ -18,13 +19,16 @@ export function useComponentId(prefix: string) {
 /**
  * Return the PortalUid to be used in a PlaceHolder component.
  */
-export function usePortalPlaceHolder<TPlaceHolderName>(
-  placeHolderName: TPlaceHolderName
-): IPlaceHolder<TPlaceHolderName> {
+export function usePortalPlaceHolder<
+  TProviderConfiguration extends IProviderConfiguration
+>(
+  placeHolderName: keyof TProviderConfiguration['portalNames']
+): IPlaceHolder<keyof TProviderConfiguration['portalNames']> {
   const placeHolderUid = useComponentId('PortalPlaceHolder')
 
-  const placeHolderPortalIds_ =
-    placeHolderPortalIds as PlaceHolderIds<TPlaceHolderName>
+  const placeHolderPortalIds_ = placeHolderPortalIds as PlaceHolderIds<
+    keyof TProviderConfiguration['portalNames']
+  >
 
   const portalUid = React.useMemo(() => {
     addSetValueToMap(placeHolderPortalIds_, placeHolderName, placeHolderUid)

@@ -13,7 +13,7 @@ export function configureReactToolboxComponents<
   return {
     ReactToolboxProvider: ReactToolboxProvider<TProviderConfiguration>,
     ContainerFlex: ContainerFlex<TProviderConfiguration>,
-    Portal: Portal,
-    PortalPlaceHolder: PortalPlaceHolder
+    Portal: Portal<TProviderConfiguration>,
+    PortalPlaceHolder: PortalPlaceHolder<TProviderConfiguration>
   }
 }
