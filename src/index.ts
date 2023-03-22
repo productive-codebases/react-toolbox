@@ -1,15 +1,11 @@
 /**
- * --- Libs ---
- */
-
-/**
  * Logger
  */
 
 export { defaultLoggerSetup as reactToolboxLoggerSetup } from './libs/logger'
 
 /**
- * ForwardPropds
+ * ForwardProps
  */
 
 export { forwardProps } from './libs/forwardProps'
@@ -32,7 +28,13 @@ export * from './libs/dataTestAttribute/type'
 export { configureReactToolboxHooks } from './hooks/configureReactToolboxHooks'
 
 /**
- * --- Components ---
+ * Theme
+ */
+
+export { themes } from './styles/themes'
+
+/**
+ * Components
  */
 
 export { configureReactToolboxComponents } from './components/configureReactToolboxComponents'
