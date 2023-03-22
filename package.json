@@ -42,7 +42,7 @@
   "types": "./dist/index.d.ts",
   "devDependencies": {
     "@productive-codebases/build-variants": "^1.3.0",
-    "@productive-codebases/toolbox": "^1.1.0-beta.7",
+    "@productive-codebases/toolbox": "^1.1.0-beta.8",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^14.0.0",
     "@types/node": "^18.7.6",

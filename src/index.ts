@@ -3,6 +3,12 @@
  */
 
 /**
+ * Logger
+ */
+
+export { defaultLoggerSetup as reactToolboxLoggerSetup } from './libs/logger'
+
+/**
  * ForwardPropds
  */
 

@@ -1,4 +1,3 @@
-import { IProviderConfiguration } from '@/components/ReactToolboxProvider/types'
 import { appSetupLogger } from './libs/logger'
 import { appTheme } from './styles/theme'
 

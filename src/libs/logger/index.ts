@@ -10,4 +10,4 @@ export const defaultLoggerMapping = {
   }
 }
 
-export const defaultSetupLogger = setupLogger(defaultLoggerMapping)
+export const defaultLoggerSetup = setupLogger(defaultLoggerMapping)

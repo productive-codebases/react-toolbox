@@ -1,6 +1,7 @@
 import { IProviderConfiguration } from '@/components/ReactToolboxProvider/types'
 import { useLogger } from './useLogger'
 import { useReactToolboxContext } from './useReactToolboxContext'
+import { useTheme } from './useTheme'
 
 /**
  * Configure all hooks for a defined provider configuration.
@@ -11,6 +12,6 @@ export function configureReactToolboxHooks<
   return {
     useReactToolboxContext: useReactToolboxContext<TProviderConfiguration>,
     useLogger: useLogger<TProviderConfiguration>,
-    useTheme: useLogger<TProviderConfiguration>
+    useTheme: useTheme<TProviderConfiguration>
   }
 }
