@@ -89,13 +89,13 @@ export function ContainerFlex<
 >(
   props: IContainerFlexProps<TProviderConfiguration> & {
     // Expose a ref as an explicit prop to workaround React.forwardRef that doesn't work with generics
-    containerRef?: React.ForwardedRef<HTMLDivElement>
+    ref?: React.ForwardedRef<HTMLDivElement>
   }
 ) {
   return (
     <Div
       data-attr-name={props.name}
-      ref={props.containerRef}
+      ref={props.ref}
       name={props.name}
       flexGrow={props.flexGrow}
       flexDirection={props.flexDirection}
