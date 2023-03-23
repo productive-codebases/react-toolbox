@@ -1,8 +1,9 @@
 /**
- * Add a react.ref prop to P props.
- * Useful when using react.forwardRef.
+ * Add an innerRef property to props.
+ * Useful as an alternative to React.forwardRef to workaround typings limitation
+ * when using generics on components.
  *
  * Usage:
- * WithRef<MyProps, HTMLDivElement>
+ * type PropsWithInnerRef = WithInnerRef<MyProps, HTMLDivElement>
  */
-export type WithRef<P, E> = P & { ref?: React.ForwardedRef<E> }
+export type WithInnerRef<P, E> = P & { innerRef?: React.ForwardedRef<E> }

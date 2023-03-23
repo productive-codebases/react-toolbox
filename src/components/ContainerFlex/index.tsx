@@ -3,8 +3,7 @@ import { useTheme } from '@/hooks/useTheme'
 import { forwardProps } from '@/libs/forwardProps'
 import { filterNullOrUndefinedValues } from '@/libs/forwardProps/filterNullOrUndefinedValues'
 import { buildVariants } from '@/styles/buildVariants'
-import { WithRef } from '@/types/reactHelpers'
-import React, { forwardRef } from 'react'
+import { WithInnerRef } from '@/types/reactHelpers'
 import styled from 'styled-components'
 import { IProviderConfiguration } from '../ReactToolboxProvider/types'
 import { IContainerFlexProps } from './types'
@@ -85,14 +84,18 @@ const Div = styled.div<IContainerFlexProps<any>>(props_ => {
   return styles
 })
 
-function ContainerFlex_<TProviderConfiguration extends IProviderConfiguration>(
-  props: WithRef<IContainerFlexProps<TProviderConfiguration>, HTMLDivElement>,
-  ref: React.ForwardedRef<HTMLDivElement>
+export function ContainerFlex<
+  TProviderConfiguration extends IProviderConfiguration
+>(
+  props: WithInnerRef<
+    IContainerFlexProps<TProviderConfiguration>,
+    HTMLDivElement
+  >
 ) {
   return (
     <Div
       data-attr-name={props.name}
-      ref={ref}
+      ref={props.innerRef}
       name={props.name}
       flexGrow={props.flexGrow}
       flexDirection={props.flexDirection}
@@ -114,5 +117,3 @@ function ContainerFlex_<TProviderConfiguration extends IProviderConfiguration>(
     </Div>
   )
 }
-
-export const ContainerFlex = forwardRef(ContainerFlex_) as typeof ContainerFlex_

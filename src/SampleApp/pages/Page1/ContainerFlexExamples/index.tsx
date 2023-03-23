@@ -1,9 +1,21 @@
 import { getDataTestAttributeProp } from '@/libs/dataTestAttribute/hooks'
 import { ReactToolboxComponents } from '@/SampleApp/components'
 import { reactToolboxHooks } from '@/SampleApp/hooks'
+import { buildVariants } from '@/styles/buildVariants'
 import { useEffect, useRef } from 'react'
+import styled from 'styled-components'
 
 export interface IContainerFlexExamplesProps {}
+
+const StyledContainerFlex = styled(ReactToolboxComponents.ContainerFlex)(
+  props => {
+    return buildVariants(props)
+      .css({
+        border: '1px solid red'
+      })
+      .end()
+  }
+)
 
 export function ContainerFlexExamples(props: IContainerFlexExamplesProps) {
   const containerFlexRef = useRef<HTMLDivElement>(null)
@@ -28,8 +40,8 @@ export function ContainerFlexExamples(props: IContainerFlexExamplesProps) {
   }, [containerFlexRef])
 
   return (
-    <ReactToolboxComponents.ContainerFlex
-      ref={containerFlexRef}
+    <StyledContainerFlex
+      innerRef={containerFlexRef}
       name="Example1"
       flexDirection="column"
       flexGap="default"
@@ -46,6 +58,6 @@ export function ContainerFlexExamples(props: IContainerFlexExamplesProps) {
       <div>Children 2</div>
 
       <div>Children 3</div>
-    </ReactToolboxComponents.ContainerFlex>
+    </StyledContainerFlex>
   )
 }
