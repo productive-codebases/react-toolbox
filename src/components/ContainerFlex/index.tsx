@@ -3,7 +3,8 @@ import { useTheme } from '@/hooks/useTheme'
 import { forwardProps } from '@/libs/forwardProps'
 import { filterNullOrUndefinedValues } from '@/libs/forwardProps/filterNullOrUndefinedValues'
 import { buildVariants } from '@/styles/buildVariants'
-import React from 'react'
+import { WithRef } from '@/types/reactHelpers'
+import React, { forwardRef } from 'react'
 import styled from 'styled-components'
 import { IProviderConfiguration } from '../ReactToolboxProvider/types'
 import { IContainerFlexProps } from './types'
@@ -84,18 +85,14 @@ const Div = styled.div<IContainerFlexProps<any>>(props_ => {
   return styles
 })
 
-export function ContainerFlex<
-  TProviderConfiguration extends IProviderConfiguration
->(
-  props: IContainerFlexProps<TProviderConfiguration> & {
-    // Expose a ref as an explicit prop to workaround React.forwardRef that doesn't work with generics
-    ref?: React.ForwardedRef<HTMLDivElement>
-  }
+function ContainerFlex_<TProviderConfiguration extends IProviderConfiguration>(
+  props: WithRef<IContainerFlexProps<TProviderConfiguration>, HTMLDivElement>,
+  ref: React.ForwardedRef<HTMLDivElement>
 ) {
   return (
     <Div
       data-attr-name={props.name}
-      ref={props.ref}
+      ref={ref}
       name={props.name}
       flexGrow={props.flexGrow}
       flexDirection={props.flexDirection}
@@ -117,3 +114,5 @@ export function ContainerFlex<
     </Div>
   )
 }
+
+export const ContainerFlex = forwardRef(ContainerFlex_) as typeof ContainerFlex_

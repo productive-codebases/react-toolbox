@@ -22,6 +22,7 @@ export function ContainerFlexExamples(props: IContainerFlexExamplesProps) {
 
     logger('debug')(
       'Container size:',
+      containerFlexRef.current,
       containerFlexRef.current.getBoundingClientRect()
     )
   }, [containerFlexRef])
