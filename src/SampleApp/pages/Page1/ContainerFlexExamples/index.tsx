@@ -28,7 +28,7 @@ export function ContainerFlexExamples(props: IContainerFlexExamplesProps) {
 
   return (
     <ReactToolboxComponents.ContainerFlex
-      containerRef={containerFlexRef}
+      ref={containerFlexRef}
       name="Example1"
       flexDirection="column"
       flexGap="default"
