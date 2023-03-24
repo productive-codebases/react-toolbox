@@ -25,19 +25,18 @@ export * from './libs/dataTestAttribute/type'
  * Hooks
  */
 
-export { configureReactToolboxHooks } from './hooks/configureReactToolboxHooks'
+export { configureReactToolbox } from './configureReactToolbox'
 
 /**
  * Theme
  */
 
 export { themes } from './styles/themes'
+export { extendTheme } from './libs/theme/extendTheme'
 
 /**
  * Components
  */
-
-export { configureReactToolboxComponents } from './components/configureReactToolboxComponents'
 
 export type { IContainerFlexProps } from './components/ContainerFlex/types'
 

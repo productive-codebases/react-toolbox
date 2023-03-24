@@ -1,6 +1,8 @@
 import { getDataTestAttributeProp } from '@/libs/dataTestAttribute/hooks'
-import { ReactToolboxComponents } from '@/SampleApp/components'
-import { reactToolboxHooks } from '@/SampleApp/hooks'
+import {
+  ReactToolboxComponents,
+  reactToolboxHooks
+} from '@/SampleApp/components'
 import { buildVariants } from '@/styles/buildVariants'
 import { useEffect, useRef } from 'react'
 import styled from 'styled-components'

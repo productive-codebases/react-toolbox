@@ -1,5 +1,5 @@
-import { configureReactToolboxComponents } from '@/components/configureReactToolboxComponents'
+import { configureReactToolbox } from '@/configureReactToolbox'
 import { AppProviderConfiguration } from '../providerConfiguration'
 
-export const ReactToolboxComponents =
-  configureReactToolboxComponents<AppProviderConfiguration>()
+export const { components: ReactToolboxComponents, hooks: reactToolboxHooks } =
+  configureReactToolbox<AppProviderConfiguration>()
