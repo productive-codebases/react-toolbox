@@ -2,7 +2,7 @@ import { appSetupLogger } from '@/SampleApp/libs/logger'
 import { themes } from '@/styles/themes'
 import { IReactToolboxProviderConfiguration } from '@/types'
 import { ThemeProvider } from 'styled-components'
-import { ProviderContext } from './context'
+import { ReactToolboxProviderContext } from './context'
 import { IReactToolboxProviderProps } from './types'
 
 /**
@@ -18,10 +18,10 @@ export function ReactToolboxProvider<
   }
 
   return (
-    <ProviderContext.Provider value={providerConfiguration}>
+    <ReactToolboxProviderContext.Provider value={providerConfiguration}>
       <ThemeProvider theme={providerConfiguration.theme}>
         {props.children}
       </ThemeProvider>
-    </ProviderContext.Provider>
+    </ReactToolboxProviderContext.Provider>
   )
 }

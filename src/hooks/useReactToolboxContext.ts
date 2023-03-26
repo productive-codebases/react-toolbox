@@ -2,13 +2,13 @@ import {
   IReactToolboxProviderConfiguration,
   IReactToolboxProviderContext
 } from '..'
-import { ProviderContext } from '@/components/ReactToolboxProvider/context'
+import { ReactToolboxProviderContext } from '@/components/ReactToolboxProvider/context'
 import { useContext } from 'react'
 
 export function useReactToolboxContext<
   TReactToolboxProviderConfiguration extends IReactToolboxProviderConfiguration
 >() {
-  const context = useContext(ProviderContext)
+  const context = useContext(ReactToolboxProviderContext)
 
   if (!context) {
     throw new Error(

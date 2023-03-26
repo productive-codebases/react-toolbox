@@ -59,6 +59,8 @@ export { extendTheme } from './libs/theme/extendTheme'
  * Components
  */
 
+export { ReactToolboxProvider } from './components/ReactToolboxProvider'
+
 export { ContainerFlex } from './components/ContainerFlex'
 export type { IContainerFlexProps } from './components/ContainerFlex/types'
 
