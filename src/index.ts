@@ -69,4 +69,9 @@ export { Portal } from './components/Portal'
  * Types
  */
 
+export type {
+  IReactToolboxProviderConfiguration,
+  IReactToolboxProviderContext
+} from './types'
+
 export type { WithInnerRef } from './types/reactHelpers'

@@ -2,28 +2,30 @@ import { ContainerFlex } from '@/components/ContainerFlex'
 import { Portal } from '@/components/Portal'
 import { PortalPlaceHolder } from '@/components/Portal/PortalPlaceHolder'
 import { ReactToolboxProvider } from '@/components/ReactToolboxProvider'
-import { IProviderConfiguration } from '@/components/ReactToolboxProvider/types'
 import { useLogger } from '@/hooks/useLogger'
 import { useReactToolboxContext } from '@/hooks/useReactToolboxContext'
 import { useTheme } from '@/hooks/useTheme'
+import { IReactToolboxProviderConfiguration } from '@/types'
 
 /**
- * Configure React Toolbox with a defined IProviderConfiguration configuration.
+ * Configure React Toolbox with a defined IReactToolboxProviderConfiguration configuration.
  */
 export function configureReactToolbox<
-  TProviderConfiguration extends IProviderConfiguration
+  TReactToolboxProviderConfiguration extends IReactToolboxProviderConfiguration
 >() {
   return {
     components: {
-      ReactToolboxProvider: ReactToolboxProvider<TProviderConfiguration>,
-      ContainerFlex: ContainerFlex<TProviderConfiguration>,
-      Portal: Portal<TProviderConfiguration>,
-      PortalPlaceHolder: PortalPlaceHolder<TProviderConfiguration>
+      ReactToolboxProvider:
+        ReactToolboxProvider<TReactToolboxProviderConfiguration>,
+      ContainerFlex: ContainerFlex<TReactToolboxProviderConfiguration>,
+      Portal: Portal<TReactToolboxProviderConfiguration>,
+      PortalPlaceHolder: PortalPlaceHolder<TReactToolboxProviderConfiguration>
     },
     hooks: {
-      useReactToolboxContext: useReactToolboxContext<TProviderConfiguration>,
-      useLogger: useLogger<TProviderConfiguration>,
-      useTheme: useTheme<TProviderConfiguration>
+      useReactToolboxContext:
+        useReactToolboxContext<TReactToolboxProviderConfiguration>,
+      useLogger: useLogger<TReactToolboxProviderConfiguration>,
+      useTheme: useTheme<TReactToolboxProviderConfiguration>
     }
   }
 }

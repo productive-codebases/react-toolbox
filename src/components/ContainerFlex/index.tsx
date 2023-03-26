@@ -3,9 +3,9 @@ import { useTheme } from '@/hooks/useTheme'
 import { forwardProps } from '@/libs/forwardProps'
 import { filterNullOrUndefinedValues } from '@/libs/forwardProps/filterNullOrUndefinedValues'
 import { buildVariants } from '@/styles/buildVariants'
+import { IReactToolboxProviderConfiguration } from '@/types'
 import { WithInnerRef } from '@/types/reactHelpers'
 import styled from 'styled-components'
-import { IProviderConfiguration } from '../ReactToolboxProvider/types'
 import { IContainerFlexProps } from './types'
 
 const Div = styled.div<IContainerFlexProps<any>>(props_ => {
@@ -14,7 +14,8 @@ const Div = styled.div<IContainerFlexProps<any>>(props_ => {
   )
   const theme = useTheme()
 
-  const props = props_ as IContainerFlexProps<IProviderConfiguration>
+  const props =
+    props_ as IContainerFlexProps<IReactToolboxProviderConfiguration>
 
   const styles = buildVariants(props)
     .css({
@@ -85,10 +86,10 @@ const Div = styled.div<IContainerFlexProps<any>>(props_ => {
 })
 
 export function ContainerFlex<
-  TProviderConfiguration extends IProviderConfiguration
+  TReactToolboxProviderConfiguration extends IReactToolboxProviderConfiguration
 >(
   props: WithInnerRef<
-    IContainerFlexProps<TProviderConfiguration>,
+    IContainerFlexProps<TReactToolboxProviderConfiguration>,
     HTMLDivElement
   >
 ) {

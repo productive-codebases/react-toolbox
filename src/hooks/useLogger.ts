@@ -1,12 +1,12 @@
-import { IProviderConfiguration } from '@/components/ReactToolboxProvider/types'
+import { IReactToolboxProviderConfiguration } from '@/types'
 import { useReactToolboxContext } from './useReactToolboxContext'
 
 /**
  * Return logger from the Provider.
  */
 export function useLogger<
-  TProviderConfiguration extends IProviderConfiguration
->(): TProviderConfiguration['loggerSetup'] {
+  TReactToolboxProviderConfiguration extends IReactToolboxProviderConfiguration
+>(): TReactToolboxProviderConfiguration['loggerSetup'] {
   const context = useReactToolboxContext()
 
   if (!context.loggerSetup) {

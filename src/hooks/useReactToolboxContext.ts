@@ -1,12 +1,12 @@
-import { ProviderContext } from '@/components/ReactToolboxProvider/context'
 import {
-  IProviderConfiguration,
-  IProviderContext
-} from '@/components/ReactToolboxProvider/types'
+  IReactToolboxProviderConfiguration,
+  IReactToolboxProviderContext
+} from '..'
+import { ProviderContext } from '@/components/ReactToolboxProvider/context'
 import { useContext } from 'react'
 
 export function useReactToolboxContext<
-  TProviderConfiguration extends IProviderConfiguration
+  TReactToolboxProviderConfiguration extends IReactToolboxProviderConfiguration
 >() {
   const context = useContext(ProviderContext)
 
@@ -16,5 +16,5 @@ export function useReactToolboxContext<
     )
   }
 
-  return context as IProviderContext<TProviderConfiguration>
+  return context as IReactToolboxProviderContext<TReactToolboxProviderConfiguration>
 }

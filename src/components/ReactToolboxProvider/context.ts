@@ -1,6 +1,6 @@
+import { IReactToolboxProviderContext } from '@/types'
 import { Maybe } from '@productive-codebases/toolbox'
-import * as React from 'react'
-import { IProviderContext } from './types'
+import { createContext } from 'react'
 
 export const ProviderContext =
-  React.createContext<Maybe<IProviderContext<any>>>(null)
+  createContext<Maybe<IReactToolboxProviderContext<any>>>(null)

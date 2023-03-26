@@ -1,9 +1,9 @@
 import { IForwardedProps, ReactHTMLAttributes } from '@/libs/forwardProps/types'
+import { IReactToolboxProviderConfiguration } from '@/types'
 import { Maybe } from '@productive-codebases/toolbox'
-import { IProviderConfiguration } from '../ReactToolboxProvider/types'
 
 export interface IContainerFlexProps<
-  TProviderConfiguration extends IProviderConfiguration
+  TReactToolboxProviderConfiguration extends IReactToolboxProviderConfiguration
 > extends IForwardedProps<ReactHTMLAttributes<HTMLDivElement>> {
   /** data-attr-name for easier debugging / dom documentation */
   name: string
@@ -20,20 +20,20 @@ export interface IContainerFlexProps<
   /** Define items wrapping behavior */
   flexWrap?: React.CSSProperties['flexWrap']
   /** Define items gap */
-  flexGap?: keyof TProviderConfiguration['theme']['sizes']
+  flexGap?: keyof TReactToolboxProviderConfiguration['theme']['sizes']
 
   /** Define items height */
   height?: React.CSSProperties['height']
   /** Define items nodes */
   children: React.ReactNode
   /** Container horizontal padding */
-  paddingH?: Maybe<keyof TProviderConfiguration['theme']['sizes']>
+  paddingH?: Maybe<keyof TReactToolboxProviderConfiguration['theme']['sizes']>
   /** Container vertical padding */
-  paddingV?: Maybe<keyof TProviderConfiguration['theme']['sizes']>
+  paddingV?: Maybe<keyof TReactToolboxProviderConfiguration['theme']['sizes']>
   /** Container horizontal margin */
-  marginH?: Maybe<keyof TProviderConfiguration['theme']['sizes']>
+  marginH?: Maybe<keyof TReactToolboxProviderConfiguration['theme']['sizes']>
   /** Container vertical margin */
-  marginV?: Maybe<keyof TProviderConfiguration['theme']['sizes']>
+  marginV?: Maybe<keyof TReactToolboxProviderConfiguration['theme']['sizes']>
   /** Extend the container on the full height */
   fullHeight?: boolean
   /** Extend the container on the full width */

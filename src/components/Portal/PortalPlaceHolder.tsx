@@ -1,19 +1,19 @@
 import { useLogger } from '@/hooks/useLogger'
 import { forwardProps } from '@/libs/forwardProps'
 import { IForwardedProps, ReactHTMLAttributes } from '@/libs/forwardProps/types'
-import { IProviderConfiguration } from '../ReactToolboxProvider/types'
+import { IReactToolboxProviderConfiguration } from '@/types'
 import { usePortalPlaceHolder } from './usePortal'
 
 export interface PortalPlaceHolderProps<
-  TProviderConfiguration extends IProviderConfiguration
+  TReactToolboxProviderConfiguration extends IReactToolboxProviderConfiguration
 > extends IForwardedProps<ReactHTMLAttributes<HTMLDivElement>> {
-  name: keyof TProviderConfiguration['portalNames']
+  name: keyof TReactToolboxProviderConfiguration['portalNames']
   debug?: boolean
 }
 
 export function PortalPlaceHolder<
-  TProviderConfiguration extends IProviderConfiguration
->(props: PortalPlaceHolderProps<TProviderConfiguration>) {
+  TReactToolboxProviderConfiguration extends IReactToolboxProviderConfiguration
+>(props: PortalPlaceHolderProps<TReactToolboxProviderConfiguration>) {
   const { portalUid } = usePortalPlaceHolder(props.name)
 
   const logger = useLogger().newLogger('ReactToolBox')(

@@ -1,17 +1,17 @@
 import {
-  IProviderConfiguration,
-  IProviderContext
-} from '@/components/ReactToolboxProvider/types'
+  IReactToolboxProviderConfiguration,
+  IReactToolboxProviderContext
+} from '..'
 import { useReactToolboxContext } from './useReactToolboxContext'
 
 /**
  * Return the theme from the Provider.
  */
 export function useTheme<
-  TProviderConfiguration extends IProviderConfiguration
+  TReactToolboxProviderConfiguration extends IReactToolboxProviderConfiguration
 >() {
   const context =
-    useReactToolboxContext() as IProviderContext<TProviderConfiguration>
+    useReactToolboxContext() as IReactToolboxProviderContext<TReactToolboxProviderConfiguration>
 
   if (!context.theme) {
     throw new Error('No theme found in ProviderContext')

@@ -1,13 +1,13 @@
 import { useLogger } from '@/hooks/useLogger'
-import * as React from 'react'
-import * as ReactDOM from 'react-dom'
-import { IProviderConfiguration } from '../ReactToolboxProvider/types'
+import { IReactToolboxProviderConfiguration } from '@/types'
+import { useMemo, useEffect } from 'react'
+import { createPortal } from 'react-dom'
 import { usePortal } from './usePortal'
 
 export interface IPlaceHolderPortalProps<
-  TProviderConfiguration extends IProviderConfiguration
+  TReactToolboxProviderConfiguration extends IReactToolboxProviderConfiguration
 > {
-  name: keyof TProviderConfiguration['portalNames']
+  name: keyof TReactToolboxProviderConfiguration['portalNames']
   debug?: boolean
   children?: React.ReactNode
 }
@@ -18,15 +18,15 @@ export interface IPlaceHolderPortalProps<
  *
  * Return the portal object.
  */
-export function Portal<TProviderConfiguration extends IProviderConfiguration>(
-  props: IPlaceHolderPortalProps<TProviderConfiguration>
-) {
+export function Portal<
+  TReactToolboxProviderConfiguration extends IReactToolboxProviderConfiguration
+>(props: IPlaceHolderPortalProps<TReactToolboxProviderConfiguration>) {
   const logger = useLogger().newLogger('ReactToolBox')('components/Portal')
   const { portalUid, placeHolderPortalIds } = usePortal(props.name)
 
-  const childNode = React.useMemo(() => document.createElement('div'), [])
+  const childNode = useMemo(() => document.createElement('div'), [])
 
-  React.useEffect(() => {
+  useEffect(() => {
     const containerNode = document.getElementById(portalUid)
 
     if (containerNode) {
@@ -49,5 +49,5 @@ export function Portal<TProviderConfiguration extends IProviderConfiguration>(
     )
   }
 
-  return ReactDOM.createPortal(props.children, childNode)
+  return createPortal(props.children, childNode)
 }

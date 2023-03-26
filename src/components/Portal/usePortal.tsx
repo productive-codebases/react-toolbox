@@ -1,9 +1,9 @@
+import { IReactToolboxProviderConfiguration } from '@/types'
 import {
   addSetValueToMap,
   removeSetValueToMap
 } from '@productive-codebases/toolbox'
-import * as React from 'react'
-import { IProviderConfiguration } from '../ReactToolboxProvider/types'
+import React, { useMemo, useEffect } from 'react'
 import { IPlaceHolder, PlaceHolderIds } from './types'
 
 const placeHolderPortalIds: PlaceHolderIds<string> = new Map()
@@ -20,23 +20,23 @@ export function useComponentId(prefix: string) {
  * Return the PortalUid to be used in a PlaceHolder component.
  */
 export function usePortalPlaceHolder<
-  TProviderConfiguration extends IProviderConfiguration
+  TReactToolboxProviderConfiguration extends IReactToolboxProviderConfiguration
 >(
-  placeHolderName: keyof TProviderConfiguration['portalNames']
-): IPlaceHolder<keyof TProviderConfiguration['portalNames']> {
+  placeHolderName: keyof TReactToolboxProviderConfiguration['portalNames']
+): IPlaceHolder<keyof TReactToolboxProviderConfiguration['portalNames']> {
   const placeHolderUid = useComponentId('PortalPlaceHolder')
 
   const placeHolderPortalIds_ = placeHolderPortalIds as PlaceHolderIds<
-    keyof TProviderConfiguration['portalNames']
+    keyof TReactToolboxProviderConfiguration['portalNames']
   >
 
-  const portalUid = React.useMemo(() => {
+  const portalUid = useMemo(() => {
     addSetValueToMap(placeHolderPortalIds_, placeHolderName, placeHolderUid)
 
     return placeHolderUid
   }, [])
 
-  React.useEffect(() => {
+  useEffect(() => {
     return () =>
       removeSetValueToMap(placeHolderPortalIds_, placeHolderName, portalUid)
   }, [])
