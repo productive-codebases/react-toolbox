@@ -1,7 +1,7 @@
 {
   "name": "@productive-codebases/react-toolbox",
   "private": false,
-  "version": "0.1.0-beta.21",
+  "version": "0.1.0-beta.22",
   "type": "module",
   "scripts": {
     ":d": "npm run dev",
