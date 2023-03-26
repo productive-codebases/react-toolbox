@@ -1,11 +1,11 @@
-import { ContainerFlex } from './components/ContainerFlex'
-import { Portal } from './components/Portal'
-import { PortalPlaceHolder } from './components/Portal/PortalPlaceHolder'
-import { ReactToolboxProvider } from './components/ReactToolboxProvider'
-import { IProviderConfiguration } from './components/ReactToolboxProvider/types'
-import { useLogger } from './hooks/useLogger'
-import { useReactToolboxContext } from './hooks/useReactToolboxContext'
-import { useTheme } from './hooks/useTheme'
+import { ContainerFlex } from '@/components/ContainerFlex'
+import { Portal } from '@/components/Portal'
+import { PortalPlaceHolder } from '@/components/Portal/PortalPlaceHolder'
+import { ReactToolboxProvider } from '@/components/ReactToolboxProvider'
+import { IProviderConfiguration } from '@/components/ReactToolboxProvider/types'
+import { useLogger } from '@/hooks/useLogger'
+import { useReactToolboxContext } from '@/hooks/useReactToolboxContext'
+import { useTheme } from '@/hooks/useTheme'
 
 /**
  * Configure React Toolbox with a defined IProviderConfiguration configuration.

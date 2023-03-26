@@ -5,8 +5,8 @@ export const appTheme = deepMerge([
   themes.default,
   {
     color: {
-      light: 'light',
-      dark: 'dark'
+      red: 'red',
+      blue: 'blue'
     },
     sizes: {
       small: '5px',

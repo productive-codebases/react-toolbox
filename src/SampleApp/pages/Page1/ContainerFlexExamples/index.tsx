@@ -1,19 +1,21 @@
 import { getDataTestAttributeProp } from '@/libs/dataTestAttribute/hooks'
 import {
-  ReactToolboxComponents,
-  reactToolboxHooks
-} from '@/SampleApp/components'
+  AppReactToolboxComponents,
+  appReactToolboxHooks
+} from '@/SampleApp/libs/ReactToolbox'
 import { buildVariants } from '@/styles/buildVariants'
 import { useEffect, useRef } from 'react'
 import styled from 'styled-components'
 
 export interface IContainerFlexExamplesProps {}
 
-const StyledContainerFlex = styled(ReactToolboxComponents.ContainerFlex)(
+const StyledContainerFlex = styled(AppReactToolboxComponents.ContainerFlex)(
   props => {
+    const theme = appReactToolboxHooks.useTheme()
+
     return buildVariants(props)
       .css({
-        border: '1px solid red'
+        border: `1px solid ${theme.color.blue}`
       })
       .end()
   }
@@ -22,7 +24,7 @@ const StyledContainerFlex = styled(ReactToolboxComponents.ContainerFlex)(
 export function ContainerFlexExamples(props: IContainerFlexExamplesProps) {
   const containerFlexRef = useRef<HTMLDivElement>(null)
 
-  const logger = reactToolboxHooks.useLogger().newLogger('SampleApp')(
+  const logger = appReactToolboxHooks.useLogger().newLogger('SampleApp')(
     'components'
   )
 

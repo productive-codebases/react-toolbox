@@ -1,4 +1,4 @@
-import { ReactToolboxComponents } from '@/SampleApp/components'
+import { AppReactToolboxComponents } from '@/SampleApp/libs/ReactToolbox'
 import { ContainerFlexExamples } from './ContainerFlexExamples'
 
 export interface IPage1Props {}
@@ -6,17 +6,17 @@ export interface IPage1Props {}
 export function Page1(props: IPage1Props) {
   return (
     <>
-      <ReactToolboxComponents.ContainerFlex
+      <AppReactToolboxComponents.ContainerFlex
         name="Layout"
         flexJustifyContent="space-between"
       >
         <ContainerFlexExamples />
-        <ReactToolboxComponents.PortalPlaceHolder name="rightSideBar" />
-      </ReactToolboxComponents.ContainerFlex>
+        <AppReactToolboxComponents.PortalPlaceHolder name="rightSideBar" />
+      </AppReactToolboxComponents.ContainerFlex>
 
-      <ReactToolboxComponents.Portal name="rightSideBar">
+      <AppReactToolboxComponents.Portal name="rightSideBar">
         Here the content of PortalExample1
-      </ReactToolboxComponents.Portal>
+      </AppReactToolboxComponents.Portal>
     </>
   )
 }
