@@ -50,3 +50,5 @@ export const roles = {
   control: 'control',
   icon: 'icon'
 }
+
+export type Roles = typeof roles

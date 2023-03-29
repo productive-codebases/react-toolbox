@@ -1,6 +1,6 @@
-import { getDataTestAttributeProp } from '@/libs/dataTestAttribute/hooks'
 import {
   AppReactToolboxComponents,
+  appReactToolboxHelpers,
   appReactToolboxHooks
 } from '@/SampleApp/libs/ReactToolbox'
 import { buildVariants } from '@/styles/buildVariants'
@@ -52,8 +52,8 @@ export function ContainerFlexExamples(props: IContainerFlexExamplesProps) {
       itemsDebug
     >
       <div
-        {...getDataTestAttributeProp({
-          role: 'container/title',
+        {...appReactToolboxHelpers.getDataTestAttributeProp({
+          role: 'customContainer',
           label: 'this-is-a-label'
         })}
       >

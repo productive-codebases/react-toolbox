@@ -1,3 +1,4 @@
+import { roles } from '@/libs/dataTestAttribute/roles'
 import { appSetupLogger } from '@/SampleApp/libs/logger'
 import { themes } from '@/styles/themes'
 import { IReactToolboxProviderConfiguration } from '@/types'
@@ -13,6 +14,7 @@ export function ReactToolboxProvider<
 >(props: IReactToolboxProviderProps<TReactToolboxProviderConfiguration>) {
   const providerConfiguration: IReactToolboxProviderConfiguration = {
     theme: props.configuration?.theme ?? themes.default,
+    roles,
     loggerSetup: props.configuration?.loggerSetup ?? appSetupLogger,
     portalNames: ['default']
   }
