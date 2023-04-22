@@ -71,8 +71,8 @@
     "vitest": "^0.30.1"
   },
   "peerDependencies": {
-    "@productive-codebases/build-variants": "*",
-    "@productive-codebases/toolbox": "*",
+    "@productive-codebases/build-variants": "=>1.3.0",
+    "@productive-codebases/toolbox": "=>1.1.0-beta.13",
     "react": ">=18.2",
     "react-dom": ">=18.2",
     "styled-components": ">=1.1.0"
