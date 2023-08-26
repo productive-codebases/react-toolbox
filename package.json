@@ -1,6 +1,6 @@
 {
   "name": "@productive-codebases/react-toolbox",
-  "version": "0.1.0-beta.30",
+  "version": "0.1.0-beta.31",
   "scripts": {
     ":d": "npm run dev",
     "build": "CI=1 vite build",
