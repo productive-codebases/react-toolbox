@@ -27,7 +27,7 @@ export default defineConfig({
     lib: {
       entry: resolve('src', 'index.ts'),
       name: 'react-toolbox',
-      formats: ['es', 'cjs', 'umd'],
+      formats: ['es', 'cjs'],
       fileName: format => `react-toolbox.${format}.js`
     },
     rollupOptions: {

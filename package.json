@@ -27,13 +27,6 @@
   "files": [
     "dist"
   ],
-  "exports": {
-    ".": {
-      "import": "./dist/react-toolbox.es.js",
-      "require": "./dist/react-toolbox.umd.js"
-    },
-    "./dist/style.css": "./dist/style.css"
-  },
   "main": "./dist/react-toolbox.cjs.js",
   "module": "./dist/react-toolbox.es.js",
   "types": "./dist/index.d.ts",
