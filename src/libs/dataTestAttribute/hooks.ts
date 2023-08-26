@@ -1,14 +1,6 @@
-import { useLogger } from '@/hooks/useLogger'
-import {
-  deepMerge,
-  ensureArray,
-  isTruthy,
-  Perhaps
-} from '@productive-codebases/toolbox'
-import { useContext, useMemo } from 'react'
+import { ensureArray, isTruthy, Perhaps } from '@productive-codebases/toolbox'
 import { DATA_TEST_ATTRIBUTE } from '../forwardProps/constants'
 import { filterNullOrUndefinedValues } from '../forwardProps/filterNullOrUndefinedValues'
-import { DataTestAttributeContext } from './DataTestAttributeContext'
 import {
   DataTestAttribute,
   DataTestAttributeProp,
@@ -18,75 +10,40 @@ import {
 /**
  * Return the dataTestAttribute value used for accessibility and e2e testing.
  */
-export function getDataTestAttributeValue<TRoles>(
-  dataTestAttribute?: DataTestAttribute<TRoles>
-): string {
-  if (!dataTestAttribute) {
-    return ''
-  }
+export function configureGetDataTestAttributeValue<TRoles>() {
+  return function getDataTestAttributeValue(
+    dataTestAttribute?: DataTestAttribute<TRoles>
+  ): string {
+    if (!dataTestAttribute) {
+      return ''
+    }
 
-  return (
-    [
-      ...ensureArray(dataTestAttribute.role),
-      dataTestAttribute.label ?? '',
-      dataTestAttribute.identifier ?? ''
-    ]
-      .filter(isTruthy)
-      .join('/') || ''
-  )
+    return (
+      [
+        ...ensureArray(dataTestAttribute.role),
+        dataTestAttribute.label ?? '',
+        dataTestAttribute.identifier ?? ''
+      ]
+        .filter(isTruthy)
+        .join('/') || ''
+    )
+  }
 }
 
 /**
  * Return the prop from the dataTestAttribute structure.
  */
-export function getDataTestAttributeProp<TRoles>(
-  dataTestAttribute: Perhaps<DataTestAttribute<TRoles>>,
-  options?: IDataTestAttributeOptions
-): DataTestAttributeProp {
-  return filterNullOrUndefinedValues({
-    [options?.customAttribute || DATA_TEST_ATTRIBUTE]: dataTestAttribute
-      ? getDataTestAttributeValue(dataTestAttribute)
-      : null
-  })
-}
+export function configureGetDataTestAttributeProp<TRoles>() {
+  const getDataTestAttributeValue = configureGetDataTestAttributeValue<TRoles>()
 
-/**
- * Return the prop from the dataTestAttribute found from the context.
- */
-export function useDataTestAttributeProp(
-  options?: IDataTestAttributeOptions
-): DataTestAttributeProp {
-  const logger = useLogger().newLogger('ReactToolBox')(
-    'libs/useDataTestAttributeProp'
-  )
-  const dataTestAttributeContext = useContext(DataTestAttributeContext)
-
-  // Memo the labelled value to not have to compute it again and to keep it
-  // in the DOM even if the value has been removed from the context (forwardAttribute=false option)
-  return useMemo(() => {
-    const defaultOptions: IDataTestAttributeOptions = {
-      forwardAttribute: false
-    }
-
-    const mergedOptions = deepMerge([
-      defaultOptions,
-      deepMerge([dataTestAttributeContext?.options, options])
-    ])
-
-    const value = getDataTestAttributeProp(
-      dataTestAttributeContext?.dataTestAttribute,
-      mergedOptions
-    )
-
-    // remove the value from the context if forwardAttribute is false
-    if (mergedOptions?.forwardAttribute === false) {
-      delete dataTestAttributeContext?.dataTestAttribute
-    }
-
-    if (options?.debug && Object.keys(value).length) {
-      logger('debug')('Get dataTestAttribute values "%o"', value)
-    }
-
-    return value
-  }, [])
+  return function getDataTestAttributeProp(
+    dataTestAttribute: Perhaps<DataTestAttribute<TRoles>>,
+    options?: IDataTestAttributeOptions
+  ): DataTestAttributeProp {
+    return filterNullOrUndefinedValues({
+      [options?.customAttribute || DATA_TEST_ATTRIBUTE]: dataTestAttribute
+        ? getDataTestAttributeValue(dataTestAttribute)
+        : null
+    })
+  }
 }
