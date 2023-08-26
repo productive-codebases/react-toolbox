@@ -8,13 +8,7 @@ import { resolve } from 'node:path'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [
-    dts({
-      include: ['src']
-    }),
-    react({ jsxRuntime: process.env.CI ? 'classic' : 'automatic' }),
-    tsConfigPaths()
-  ],
+  plugins: [dts(), react(), tsConfigPaths()],
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src')
