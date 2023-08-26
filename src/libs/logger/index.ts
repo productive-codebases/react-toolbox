@@ -1,6 +1,6 @@
 import { setupLogger } from '@productive-codebases/toolbox'
 
-export const defaultLoggerMapping = {
+export const loggerMapping = {
   ReactToolBox: {
     'components/ContainerFlex': 'components/ContainerFlex',
     'components/PortalPlaceHolder': 'components/PortalPlaceHolder',
@@ -10,4 +10,4 @@ export const defaultLoggerMapping = {
   }
 }
 
-export const defaultLoggerSetup = setupLogger(defaultLoggerMapping)
+export const loggerSetup = setupLogger(loggerMapping)

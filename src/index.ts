@@ -8,7 +8,7 @@ export { configureReactToolbox } from './libs/configureReactToolbox'
  * Logger
  */
 
-export { defaultLoggerSetup as reactToolboxLoggerSetup } from './libs/logger'
+export { loggerSetup } from './libs/logger'
 
 /**
  * ForwardProps

@@ -1,5 +1,5 @@
 import { Roles } from '@/libs/dataTestAttribute/roles'
-import { defaultLoggerMapping } from '@/libs/logger'
+import { loggerMapping } from '@/libs/logger'
 import { Theme } from '@/styles/themes'
 import { LoggerSetup } from '@productive-codebases/toolbox'
 
@@ -8,7 +8,7 @@ import { LoggerSetup } from '@productive-codebases/toolbox'
  */
 
 export interface IReactToolboxProviderConfiguration<
-  TLoggerMapping extends object = typeof defaultLoggerMapping,
+  TLoggerMapping extends object = typeof loggerMapping,
   TTheme = Theme,
   TRoles = Roles,
   TPortalNames = {}
