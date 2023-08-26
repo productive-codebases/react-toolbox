@@ -1,15 +1,14 @@
-import { ContainerFlex } from '@/components/ContainerFlex'
-import { Portal } from '@/components/Portal'
-import { PortalPlaceHolder } from '@/components/Portal/PortalPlaceHolder'
-import { ReactToolboxProvider } from '@/components/ReactToolboxProvider'
-import { useLogger } from '@/hooks/useLogger'
-import { useReactToolboxContext } from '@/hooks/useReactToolboxContext'
-import { useTheme } from '@/hooks/useTheme'
+import { configureContainerFlex } from '@/components/ContainerFlex'
+import { configurePortal } from '@/components/Portal'
+import { configurePortalPlaceHolder } from '@/components/Portal/PortalPlaceHolder'
+import { configureReactToolboxProvider } from '@/components/ReactToolboxProvider'
+import { configureUseLogger } from '@/hooks/useLogger'
+import { configureUseReactToolboxContext } from '@/hooks/useReactToolboxContext'
+import { configureUseTheme } from '@/hooks/useTheme'
 import { IReactToolboxProviderConfiguration } from '@/types'
 import {
-  getDataTestAttributeValue,
-  getDataTestAttributeProp,
-  useDataTestAttributeProp
+  configureGetDataTestAttributeProp,
+  configureGetDataTestAttributeValue
 } from '../dataTestAttribute/hooks'
 
 /**
@@ -17,29 +16,40 @@ import {
  */
 export function configureReactToolbox<
   TReactToolboxProviderConfiguration extends IReactToolboxProviderConfiguration
->() {
+>(contextName: string) {
   return {
     components: {
       ReactToolboxProvider:
-        ReactToolboxProvider<TReactToolboxProviderConfiguration>,
-      ContainerFlex: ContainerFlex<TReactToolboxProviderConfiguration>,
-      Portal: Portal<TReactToolboxProviderConfiguration>,
-      PortalPlaceHolder: PortalPlaceHolder<TReactToolboxProviderConfiguration>
+        configureReactToolboxProvider<TReactToolboxProviderConfiguration>(
+          contextName
+        ),
+      ContainerFlex:
+        configureContainerFlex<TReactToolboxProviderConfiguration>(contextName),
+      Portal: configurePortal<TReactToolboxProviderConfiguration>(contextName),
+      PortalPlaceHolder:
+        configurePortalPlaceHolder<TReactToolboxProviderConfiguration>(
+          contextName
+        )
     },
     hooks: {
       useReactToolboxContext:
-        useReactToolboxContext<TReactToolboxProviderConfiguration>,
-      useLogger: useLogger<TReactToolboxProviderConfiguration>,
-      useTheme: useTheme<TReactToolboxProviderConfiguration>
+        configureUseReactToolboxContext<TReactToolboxProviderConfiguration>(
+          contextName
+        ),
+      useLogger:
+        configureUseLogger<TReactToolboxProviderConfiguration>(contextName),
+      useTheme:
+        configureUseTheme<TReactToolboxProviderConfiguration>(contextName)
     },
     helpers: {
-      getDataTestAttributeValue: getDataTestAttributeValue<
-        TReactToolboxProviderConfiguration['roles']
-      >,
-      getDataTestAttributeProp: getDataTestAttributeProp<
-        TReactToolboxProviderConfiguration['roles']
-      >,
-      useDataTestAttributeProp: useDataTestAttributeProp
+      getDataTestAttributeValue:
+        configureGetDataTestAttributeValue<
+          TReactToolboxProviderConfiguration['roles']
+        >(),
+      getDataTestAttributeProp:
+        configureGetDataTestAttributeProp<
+          TReactToolboxProviderConfiguration['roles']
+        >()
     }
   }
 }

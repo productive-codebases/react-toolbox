@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-undef
 module.exports = {
   env: {
     browser: true,
@@ -21,6 +22,32 @@ module.exports = {
   rules: {
     '@typescript-eslint/ban-ts-comment': 'off',
     '@typescript-eslint/ban-types': 'off',
+    '@typescript-eslint/naming-convention': [
+      'error',
+      {
+        format: ['strictCamelCase', 'PascalCase', 'UPPER_CASE'],
+        leadingUnderscore: 'allow',
+        selector: 'variableLike',
+        trailingUnderscore: 'allow'
+      },
+      {
+        format: ['strictCamelCase', 'PascalCase'],
+        leadingUnderscore: 'allow',
+        selector: ['function']
+      },
+      {
+        format: ['PascalCase'],
+        selector: 'typeLike'
+      },
+      {
+        custom: {
+          match: true,
+          regex: '^I[A-Z]'
+        },
+        format: ['PascalCase'],
+        selector: 'interface'
+      }
+    ],
     '@typescript-eslint/no-empty-function': 'off',
     '@typescript-eslint/no-empty-interface': 'off',
     '@typescript-eslint/no-explicit-any': 'off',

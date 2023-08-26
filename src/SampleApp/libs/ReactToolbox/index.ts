@@ -19,4 +19,4 @@ export const {
   components: AppReactToolboxComponents,
   hooks: appReactToolboxHooks,
   helpers: appReactToolboxHelpers
-} = configureReactToolbox<AppProviderConfiguration>()
+} = configureReactToolbox<AppProviderConfiguration>('appContext')

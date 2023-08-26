@@ -1,6 +1,6 @@
-import { useLogger } from '@/hooks/useLogger'
+import { configureUseLogger } from '@/hooks/useLogger'
 import { IReactToolboxProviderConfiguration } from '@/types'
-import { useMemo, useEffect } from 'react'
+import { useEffect, useMemo } from 'react'
 import { createPortal } from 'react-dom'
 import { usePortal } from './usePortal'
 
@@ -18,36 +18,42 @@ export interface IPlaceHolderPortalProps<
  *
  * Return the portal object.
  */
-export function Portal<
+export function configurePortal<
   TReactToolboxProviderConfiguration extends IReactToolboxProviderConfiguration
->(props: IPlaceHolderPortalProps<TReactToolboxProviderConfiguration>) {
-  const logger = useLogger().newLogger('ReactToolBox')('components/Portal')
-  const { portalUid, placeHolderPortalIds } = usePortal(props.name)
+>(contextName: string) {
+  return function Portal(
+    props: IPlaceHolderPortalProps<TReactToolboxProviderConfiguration>
+  ) {
+    const useLogger = configureUseLogger(contextName)
+    const logger = useLogger().newLogger('ReactToolBox')('components/Portal')
 
-  const childNode = useMemo(() => document.createElement('div'), [])
+    const { portalUid, placeHolderPortalIds } = usePortal(props.name)
 
-  useEffect(() => {
-    const containerNode = document.getElementById(portalUid)
+    const childNode = useMemo(() => document.createElement('div'), [])
 
-    if (containerNode) {
-      containerNode.appendChild(childNode)
-    }
+    useEffect(() => {
+      const containerNode = document.getElementById(portalUid)
 
-    return () => {
       if (containerNode) {
-        containerNode.removeChild(childNode)
+        containerNode.appendChild(childNode)
       }
+
+      return () => {
+        if (containerNode) {
+          containerNode.removeChild(childNode)
+        }
+      }
+    }, [])
+
+    if (props.debug) {
+      logger('debug')(
+        `[Portal] Portal named "${String(
+          props.name
+        )}" is looking for a container with id "${portalUid}"`,
+        placeHolderPortalIds
+      )
     }
-  }, [])
 
-  if (props.debug) {
-    logger('debug')(
-      `[Portal] Portal named "${String(
-        props.name
-      )}" is looking for a container with id "${portalUid}"`,
-      placeHolderPortalIds
-    )
+    return createPortal(props.children, childNode)
   }
-
-  return createPortal(props.children, childNode)
 }

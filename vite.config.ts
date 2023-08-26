@@ -1,5 +1,3 @@
-/// <reference types="vitest" />
-
 import react from '@vitejs/plugin-react'
 import * as path from 'path'
 import { defineConfig } from 'vite'
@@ -35,10 +33,5 @@ export default defineConfig({
     rollupOptions: {
       external: [...Object.keys(packageJson.peerDependencies)]
     }
-  },
-  test: {
-    globals: true,
-    environment: 'jsdom',
-    setupFiles: './tests/setup.ts'
   }
 })

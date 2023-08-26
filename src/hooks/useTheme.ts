@@ -1,21 +1,22 @@
-import {
-  IReactToolboxProviderConfiguration,
-  IReactToolboxProviderContext
-} from '..'
-import { useReactToolboxContext } from './useReactToolboxContext'
+import { configureUseReactToolboxContext } from './useReactToolboxContext'
+import { IReactToolboxProviderConfiguration } from '..'
 
 /**
  * Return the theme from the Provider.
  */
-export function useTheme<
+export function configureUseTheme<
   TReactToolboxProviderConfiguration extends IReactToolboxProviderConfiguration
->() {
-  const context =
-    useReactToolboxContext() as IReactToolboxProviderContext<TReactToolboxProviderConfiguration>
+>(contextName: string) {
+  return function useTheme() {
+    const context =
+      configureUseReactToolboxContext<TReactToolboxProviderConfiguration>(
+        contextName
+      )()
 
-  if (!context.theme) {
-    throw new Error('No theme found in ProviderContext')
+    if (!context.theme) {
+      throw new Error('No theme found in ProviderContext')
+    }
+
+    return context.theme
   }
-
-  return context.theme
 }

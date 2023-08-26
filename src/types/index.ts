@@ -19,7 +19,7 @@ export interface IReactToolboxProviderConfiguration<
   portalNames: TPortalNames
 }
 
-export interface IReactToolboxProviderContext<
+export interface IReactToolboxProvider<
   TReactToolboxProviderConfiguration extends IReactToolboxProviderConfiguration
 > {
   loggerSetup: TReactToolboxProviderConfiguration['loggerSetup']
