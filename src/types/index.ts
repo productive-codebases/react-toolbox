@@ -1,3 +1,4 @@
+import { configureReactToolbox } from '@/libs/configureReactToolbox'
 import { Roles } from '@/libs/dataTestAttribute/roles'
 import { loggerMapping } from '@/libs/logger'
 import { Theme } from '@/styles/themes'
@@ -6,7 +7,7 @@ import { LoggerSetup } from '@productive-codebases/toolbox'
 /**
  * Define the different parameters that will be passed to IProviderValue.
  */
-export interface IProviderConfiguration<
+export interface IReactToolboxConfigurationParameters<
   TLoggerMapping extends object = typeof loggerMapping,
   TTheme = Theme,
   TRoles = Roles,
@@ -19,12 +20,19 @@ export interface IProviderConfiguration<
 }
 
 /**
- * Define the interface of the value passed to the Provider.
+ * Interface of the value passed to the Provider.
  */
 export interface IProviderValue<
-  TReactToolboxProviderConfiguration extends IProviderConfiguration
+  TReactToolboxConfiguration extends IReactToolboxConfigurationParameters
 > {
-  loggerSetup: TReactToolboxProviderConfiguration['loggerSetup']
-  theme: TReactToolboxProviderConfiguration['theme']
-  portalNames: TReactToolboxProviderConfiguration['portalNames']
+  loggerSetup: TReactToolboxConfiguration['loggerSetup']
+  theme: TReactToolboxConfiguration['theme']
+  portalNames: TReactToolboxConfiguration['portalNames']
 }
+
+/**
+ * Configuration returned by the configurator.
+ */
+export type ReactToolBoxConfiguration<
+  TReactToolboxConfiguration extends IReactToolboxConfigurationParameters
+> = ReturnType<typeof configureReactToolbox<TReactToolboxConfiguration>>

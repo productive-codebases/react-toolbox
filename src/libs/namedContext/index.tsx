@@ -1,8 +1,12 @@
 import { isDefined } from '@productive-codebases/toolbox'
 import { useContext, useMemo } from 'react'
 import { createNamedContext } from './createNamedContext'
-import { INamedContext, IProviderProps } from './types'
+import { INamedContext, INamedProviderProps } from './types'
 
+/**
+ * Configure a named context identitied by `contextName` and return bound
+ * Provider and hook.
+ */
 export function configureNamedContext<TContextValue>(
   contextName: string,
   contextValue?: TContextValue
@@ -12,7 +16,7 @@ export function configureNamedContext<TContextValue>(
   /**
    * Return a new React Provider component.
    */
-  function ProviderNamedContext(props: IProviderProps<TContextValue>) {
+  function ProviderNamedContext(props: INamedProviderProps<TContextValue>) {
     const ProviderContext = useMemo(() => {
       return context
     }, [])

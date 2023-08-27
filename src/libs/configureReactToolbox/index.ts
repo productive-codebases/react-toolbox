@@ -3,7 +3,7 @@ import { configurePortal } from '@/components/Portal'
 import { configurePortalPlaceHolder } from '@/components/Portal/PortalPlaceHolder'
 import { configureUseLogger } from '@/hooks/useLogger'
 import { configureUseTheme } from '@/hooks/useTheme'
-import { IProviderValue, IProviderConfiguration } from '@/types'
+import { IProviderValue, IReactToolboxConfigurationParameters } from '@/types'
 import {
   configureGetDataTestAttributeProp,
   configureGetDataTestAttributeValue
@@ -14,10 +14,10 @@ import { configureNamedContext } from '../namedContext'
  * Configure React Toolbox with a defined IReactToolboxProviderConfiguration configuration.
  */
 export function configureReactToolbox<
-  TReactToolboxProviderConfiguration extends IProviderConfiguration
->(contextName: string, contextValue?: TReactToolboxProviderConfiguration) {
+  TReactToolboxConfiguration extends IReactToolboxConfigurationParameters
+>(contextName: string, contextValue?: TReactToolboxConfiguration) {
   const namedContext = configureNamedContext<
-    IProviderValue<TReactToolboxProviderConfiguration>
+    IProviderValue<TReactToolboxConfiguration>
   >(contextName, contextValue)
 
   return {
@@ -35,12 +35,10 @@ export function configureReactToolbox<
     helpers: {
       getDataTestAttributeValue:
         configureGetDataTestAttributeValue<
-          TReactToolboxProviderConfiguration['roles']
+          TReactToolboxConfiguration['roles']
         >(),
       getDataTestAttributeProp:
-        configureGetDataTestAttributeProp<
-          TReactToolboxProviderConfiguration['roles']
-        >()
+        configureGetDataTestAttributeProp<TReactToolboxConfiguration['roles']>()
     }
   }
 }

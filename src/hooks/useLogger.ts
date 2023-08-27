@@ -1,16 +1,12 @@
-import { IProviderValue, IProviderConfiguration } from '@/types'
+import { IProviderValue, IReactToolboxConfigurationParameters } from '@/types'
 import { INamedContext } from '@/libs/namedContext/types'
 
 /**
  * Return logger from the Provider.
  */
 export function configureUseLogger<
-  TReactToolboxProviderConfiguration extends IProviderConfiguration
->(
-  namedContext: INamedContext<
-    IProviderValue<TReactToolboxProviderConfiguration>
-  >
-) {
+  TReactToolboxConfiguration extends IReactToolboxConfigurationParameters
+>(namedContext: INamedContext<IProviderValue<TReactToolboxConfiguration>>) {
   return function useLogger() {
     const context = namedContext.useNamedContext()
 

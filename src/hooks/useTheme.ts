@@ -1,16 +1,12 @@
 import { INamedContext } from '@/libs/namedContext/types'
-import { IProviderConfiguration, IProviderValue } from '@/types'
+import { IReactToolboxConfigurationParameters, IProviderValue } from '@/types'
 
 /**
  * Return the theme from the Provider.
  */
 export function configureUseTheme<
-  TReactToolboxProviderConfiguration extends IProviderConfiguration
->(
-  namedContext: INamedContext<
-    IProviderValue<TReactToolboxProviderConfiguration>
-  >
-) {
+  TReactToolboxConfiguration extends IReactToolboxConfigurationParameters
+>(namedContext: INamedContext<IProviderValue<TReactToolboxConfiguration>>) {
   return function useTheme() {
     const context = namedContext.useNamedContext()
 

@@ -35,6 +35,6 @@ export const {
     getDataTestAttributeValue: getAppDataTestAttributeValue
   }
 } = configureReactToolbox<AppProviderConfiguration>(
-  'appContext2',
+  'appContext',
   appProviderConfiguration
 )

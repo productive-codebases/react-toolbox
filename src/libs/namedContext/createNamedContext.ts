@@ -1,11 +1,11 @@
 import { Maybe } from '@productive-codebases/toolbox'
 import React from 'react'
-import { ContextsRecord } from './types'
+import { NamedContextsRecord } from './types'
 
 /**
  * Save all contexts instances.
  */
-const contextsRecord: ContextsRecord = new Map()
+const contextsRecord: NamedContextsRecord = new Map()
 
 /**
  * Create a new unique context by `contextName`.
