@@ -25,7 +25,7 @@ export type { IContainerFlexProps } from './components/ContainerFlex/types'
  */
 
 // named context
-export { configureNamedContext } from './libs/namedContext'
+export { createNamedContext } from './libs/namedContext'
 export * from './libs/namedContext/types'
 
 // data-test attributes

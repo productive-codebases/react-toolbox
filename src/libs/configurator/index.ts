@@ -8,7 +8,7 @@ import {
   configureGetDataTestAttributeProp,
   configureGetDataTestAttributeValue
 } from '../dataTestAttribute/hooks'
-import { configureNamedContext } from '../namedContext'
+import { createNamedContext } from '../namedContext'
 
 /**
  * Configure React Toolbox with a defined IReactToolboxProviderConfiguration configuration.
@@ -16,7 +16,7 @@ import { configureNamedContext } from '../namedContext'
 export function configure<
   TReactToolboxConfiguration extends IConfigurationParameters
 >(contextName: string, contextValue?: TReactToolboxConfiguration) {
-  const namedContext = configureNamedContext<
+  const namedContext = createNamedContext<
     IProviderValue<TReactToolboxConfiguration>
   >(contextName, contextValue)
 

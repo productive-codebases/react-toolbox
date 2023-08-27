@@ -1,17 +1,25 @@
-import { isDefined } from '@productive-codebases/toolbox'
-import { useContext, useMemo } from 'react'
-import { createNamedContext } from './createNamedContext'
-import { INamedContext, INamedProviderProps } from './types'
+import { isDefined, Maybe } from '@productive-codebases/toolbox'
+import { createContext, useContext, useMemo } from 'react'
+import {
+  INamedContext,
+  INamedProviderProps,
+  NamedContextsRecord
+} from './types'
+
+/**
+ * Save all contexts instances.
+ */
+const contextsRecord: NamedContextsRecord = new Map()
 
 /**
  * Configure a named context identitied by `contextName` and return bound
  * Provider and hook.
  */
-export function configureNamedContext<TContextValue>(
+export function createNamedContext<TContextValue>(
   contextName: string,
   contextValue?: TContextValue
 ): INamedContext<TContextValue> {
-  const context = createNamedContext<TContextValue>(contextName)
+  const context = createReactContext<TContextValue>(contextName)
 
   /**
    * Return a new React Provider component.
@@ -48,4 +56,21 @@ export function configureNamedContext<TContextValue>(
     ProviderNamedContext,
     useNamedContext
   }
+}
+
+/**
+ * Create a new unique context by `contextName`.
+ */
+export function createReactContext<TContextValue>(contextName: string) {
+  const existingContext = contextsRecord.get(contextName)
+
+  if (existingContext) {
+    return existingContext
+  }
+
+  const context = createContext<Maybe<TContextValue>>(null)
+
+  contextsRecord.set(contextName, context)
+
+  return context
 }
