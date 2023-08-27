@@ -4,7 +4,7 @@ import { forwardProps } from '@/libs/forwardProps'
 import { filterNullOrUndefinedValues } from '@/libs/forwardProps/filterNullOrUndefinedValues'
 import { INamedContext } from '@/libs/namedContext/types'
 import { buildVariants } from '@/styles/buildVariants'
-import { IProviderValue, IReactToolboxConfigurationParameters } from '@/types'
+import { IProviderValue, IConfigurationParameters } from '@/types'
 import { WithInnerRef } from '@/types/reactHelpers'
 import { Logger } from '@productive-codebases/toolbox'
 import styled from 'styled-components'
@@ -12,14 +12,13 @@ import { IContainerFlexProps } from './types'
 
 interface IHelpers {
   logger: Logger
-  theme: IReactToolboxConfigurationParameters['theme']
+  theme: IConfigurationParameters['theme']
 }
 
 const Div = styled.div<IContainerFlexProps<any> & IHelpers>(props_ => {
   // Workaround to make it work...
-  const props =
-    props_ as IContainerFlexProps<IReactToolboxConfigurationParameters> &
-      IHelpers
+  const props = props_ as IContainerFlexProps<IConfigurationParameters> &
+    IHelpers
 
   const styles = buildVariants(props)
     .css({
@@ -90,7 +89,7 @@ const Div = styled.div<IContainerFlexProps<any> & IHelpers>(props_ => {
 })
 
 export function configureContainerFlex<
-  TReactToolboxConfiguration extends IReactToolboxConfigurationParameters
+  TReactToolboxConfiguration extends IConfigurationParameters
 >(namedContext: INamedContext<IProviderValue<TReactToolboxConfiguration>>) {
   return function ContainerFlex(
     props: WithInnerRef<

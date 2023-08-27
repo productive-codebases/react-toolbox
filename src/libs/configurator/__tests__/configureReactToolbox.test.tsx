@@ -16,7 +16,7 @@ import {
   toolboxCProviderConfiguration
 } from './toolboxC.test-fixture'
 
-describe('configureReactToolbox', () => {
+describe('configure', () => {
   it('should expose toolbox A in the context A', async () => {
     const Component = (
       <ToolboxAComponents.ProviderNamedContext

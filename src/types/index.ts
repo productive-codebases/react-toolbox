@@ -1,38 +1,37 @@
-import { configureReactToolbox } from '@/libs/configureReactToolbox'
-import { Roles } from '@/libs/dataTestAttribute/roles'
-import { loggerMapping } from '@/libs/logger'
-import { Theme } from '@/styles/themes'
-import { LoggerSetup } from '@productive-codebases/toolbox'
+import { configure } from '@/libs/configurator'
+import { LoggerMapping } from '@/libs/configurator/defaultConfiguration/loggerMapping'
+import { PortalNames } from '@/libs/configurator/defaultConfiguration/portals'
+import { Roles } from '@/libs/configurator/defaultConfiguration/roles'
+import { Theme } from '@/libs/configurator/defaultConfiguration/theme'
+
+/**
+ * Interface of the value passed to the Provider.
+ */
+export interface IProviderValue<
+  TConfiguration extends IConfigurationParameters
+> {
+  loggerMapping: TConfiguration['loggerMapping']
+  theme: TConfiguration['theme']
+  portalNames: TConfiguration['portalNames']
+}
 
 /**
  * Define the different parameters that will be passed to IProviderValue.
  */
-export interface IReactToolboxConfigurationParameters<
-  TLoggerMapping extends object = typeof loggerMapping,
+export interface IConfigurationParameters<
+  TLoggerMapping = LoggerMapping,
   TTheme = Theme,
   TRoles = Roles,
-  TPortalNames = {}
+  TPortalNames = PortalNames
 > {
-  loggerSetup: LoggerSetup<TLoggerMapping>
+  loggerMapping: TLoggerMapping
   theme: TTheme
   roles: TRoles
   portalNames: TPortalNames
 }
 
 /**
- * Interface of the value passed to the Provider.
- */
-export interface IProviderValue<
-  TReactToolboxConfiguration extends IReactToolboxConfigurationParameters
-> {
-  loggerSetup: TReactToolboxConfiguration['loggerSetup']
-  theme: TReactToolboxConfiguration['theme']
-  portalNames: TReactToolboxConfiguration['portalNames']
-}
-
-/**
  * Configuration returned by the configurator.
  */
-export type ReactToolBoxConfiguration<
-  TReactToolboxConfiguration extends IReactToolboxConfigurationParameters
-> = ReturnType<typeof configureReactToolbox<TReactToolboxConfiguration>>
+export type Configuration<TConfiguration extends IConfigurationParameters> =
+  ReturnType<typeof configure<TConfiguration>>

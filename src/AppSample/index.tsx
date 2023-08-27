@@ -1,7 +1,7 @@
 import { ProviderApp } from './libs/ReactToolbox'
 import { Page1 } from './pages/Page1'
 
-export function SampleApp() {
+export function AppSample() {
   return (
     <ProviderApp>
       <Page1 />

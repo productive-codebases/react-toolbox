@@ -1,4 +1,4 @@
-import { IReactToolboxConfigurationParameters } from '@/types'
+import { IConfigurationParameters } from '@/types'
 import {
   addSetValueToMap,
   removeSetValueToMap
@@ -20,7 +20,7 @@ export function useComponentId(prefix: string) {
  * Return the PortalUid to be used in a PlaceHolder component.
  */
 export function usePortalPlaceHolder<
-  TReactToolboxConfiguration extends IReactToolboxConfigurationParameters
+  TReactToolboxConfiguration extends IConfigurationParameters
 >(
   placeHolderName: keyof TReactToolboxConfiguration['portalNames']
 ): IPlaceHolder<keyof TReactToolboxConfiguration['portalNames']> {

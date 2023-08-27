@@ -2,12 +2,17 @@
  * Configuration
  */
 
-export { configureReactToolbox } from './libs/configureReactToolbox'
+export { configure } from './libs/configurator'
 export type {
-  IReactToolboxConfigurationParameters as IReactToolboxConfiguration,
+  IConfigurationParameters,
   IProviderValue,
-  ReactToolBoxConfiguration
+  Configuration
 } from './types'
+
+export {
+  defaultConfiguration,
+  createConfiguration
+} from './libs/configurator/defaultConfiguration'
 
 /**
  * Components
@@ -23,12 +28,7 @@ export type { IContainerFlexProps } from './components/ContainerFlex/types'
 export { configureNamedContext } from './libs/namedContext'
 export * from './libs/namedContext/types'
 
-// themes
-export { themes } from './styles/themes'
-export { extendTheme } from './libs/theme/extendTheme'
-
 // data-test attributes
-export { roles } from './libs/dataTestAttribute/roles'
 export type {
   IDataTestAttributeContext,
   IDataTestAttributeOptions,
@@ -43,9 +43,6 @@ export type {
   ExtractAttributes,
   ReactHTMLAttributes
 } from './libs/forwardProps/types'
-
-// logger
-export { loggerSetup } from './libs/logger'
 
 /**
  * Types

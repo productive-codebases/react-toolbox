@@ -3,7 +3,7 @@ import {
   getAppDataTestAttributeProp,
   useAppLogger,
   useAppTheme
-} from '@/SampleApp/libs/ReactToolbox'
+} from '@/AppSample/libs/ReactToolbox'
 import { buildVariants } from '@/styles/buildVariants'
 import { useEffect, useRef } from 'react'
 import styled from 'styled-components'
@@ -23,7 +23,7 @@ const StyledContainerFlex = styled(ContainerFlex)(props => {
 export function ContainerFlexExamples(props: IContainerFlexExamplesProps) {
   const containerFlexRef = useRef<HTMLDivElement>(null)
 
-  const logger = useAppLogger().newLogger('SampleApp')('components')
+  const logger = useAppLogger().newLogger('AppSample')('components')
 
   /**
    * Testing the passing of a ref

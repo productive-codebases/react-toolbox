@@ -1,9 +1,9 @@
 import { IForwardedProps, ReactHTMLAttributes } from '@/libs/forwardProps/types'
-import { IReactToolboxConfigurationParameters } from '@/types'
+import { IConfigurationParameters } from '@/types'
 import { Maybe } from '@productive-codebases/toolbox'
 
 export interface IContainerFlexProps<
-  TReactToolboxConfiguration extends IReactToolboxConfigurationParameters
+  TReactToolboxConfiguration extends IConfigurationParameters
 > extends IForwardedProps<ReactHTMLAttributes<HTMLDivElement>> {
   /** data-attr-name for easier debugging / dom documentation */
   name: string

@@ -6,14 +6,14 @@ import {
   useAppContext,
   useAppLogger,
   useAppTheme
-} from '@/SampleApp/libs/ReactToolbox'
+} from '@/AppSample/libs/ReactToolbox'
 
 export interface IPage1Props {}
 
 export function Page1(props: IPage1Props) {
   const valueAppContext = useAppContext()
   const theme = useAppTheme()
-  const logger = useAppLogger().newLogger('SampleApp')('components')
+  const logger = useAppLogger().newLogger('AppSample')('components')
 
   logger('info')('App context: %o', valueAppContext)
   logger('info')('App theme: %o', theme)
