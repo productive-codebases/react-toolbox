@@ -1,7 +1,8 @@
 import {
-  AppReactToolboxComponents,
-  appReactToolboxHelpers,
-  appReactToolboxHooks
+  ContainerFlex,
+  getAppDataTestAttributeProp,
+  useAppLogger,
+  useAppTheme
 } from '@/SampleApp/libs/ReactToolbox'
 import { buildVariants } from '@/styles/buildVariants'
 import { useEffect, useRef } from 'react'
@@ -9,24 +10,20 @@ import styled from 'styled-components'
 
 export interface IContainerFlexExamplesProps {}
 
-const StyledContainerFlex = styled(AppReactToolboxComponents.ContainerFlex)(
-  props => {
-    const theme = appReactToolboxHooks.useTheme()
+const StyledContainerFlex = styled(ContainerFlex)(props => {
+  const theme = useAppTheme()
 
-    return buildVariants(props)
-      .css({
-        border: `1px solid ${theme.color.blue}`
-      })
-      .end()
-  }
-)
+  return buildVariants(props)
+    .css({
+      border: `1px solid ${theme.color.blue}`
+    })
+    .end()
+})
 
 export function ContainerFlexExamples(props: IContainerFlexExamplesProps) {
   const containerFlexRef = useRef<HTMLDivElement>(null)
 
-  const logger = appReactToolboxHooks.useLogger().newLogger('SampleApp')(
-    'components'
-  )
+  const logger = useAppLogger().newLogger('SampleApp')('components')
 
   /**
    * Testing the passing of a ref
@@ -52,7 +49,7 @@ export function ContainerFlexExamples(props: IContainerFlexExamplesProps) {
       itemsDebug
     >
       <div
-        {...appReactToolboxHelpers.getDataTestAttributeProp({
+        {...getAppDataTestAttributeProp({
           role: 'customContainer',
           label: 'this-is-a-label'
         })}

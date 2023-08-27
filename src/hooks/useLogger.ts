@@ -1,17 +1,23 @@
-import { IReactToolboxProviderConfiguration } from '@/types'
-import { configureUseReactToolboxContext } from './useReactToolboxContext'
+import { IProviderValue, IProviderConfiguration } from '@/types'
+import { INamedContext } from '@/libs/namedContext/types'
 
 /**
  * Return logger from the Provider.
  */
 export function configureUseLogger<
-  TReactToolboxProviderConfiguration extends IReactToolboxProviderConfiguration
->(contextName: string) {
-  return function useLogger(): TReactToolboxProviderConfiguration['loggerSetup'] {
-    const context = configureUseReactToolboxContext(contextName)()
+  TReactToolboxProviderConfiguration extends IProviderConfiguration
+>(
+  namedContext: INamedContext<
+    IProviderValue<TReactToolboxProviderConfiguration>
+  >
+) {
+  return function useLogger() {
+    const context = namedContext.useNamedContext()
 
     if (!context.loggerSetup) {
-      throw new Error('No logger found in ProviderContext')
+      throw new Error(
+        `No logger setup has been defined in React Toolbox's configuration`
+      )
     }
 
     return context.loggerSetup

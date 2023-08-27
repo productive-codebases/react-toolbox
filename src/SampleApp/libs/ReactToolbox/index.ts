@@ -15,8 +15,26 @@ export const appProviderConfiguration = {
   }
 }
 
+/**
+ * Experimentation
+ */
 export const {
-  components: AppReactToolboxComponents,
-  hooks: appReactToolboxHooks,
-  helpers: appReactToolboxHelpers
-} = configureReactToolbox<AppProviderConfiguration>('appContext')
+  components: {
+    ProviderNamedContext: ProviderApp,
+    ContainerFlex,
+    Portal,
+    PortalPlaceHolder
+  },
+  hooks: {
+    useNamedContext: useAppContext,
+    useLogger: useAppLogger,
+    useTheme: useAppTheme
+  },
+  helpers: {
+    getDataTestAttributeProp: getAppDataTestAttributeProp,
+    getDataTestAttributeValue: getAppDataTestAttributeValue
+  }
+} = configureReactToolbox<AppProviderConfiguration>(
+  'appContext2',
+  appProviderConfiguration
+)

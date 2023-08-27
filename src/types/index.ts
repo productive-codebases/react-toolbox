@@ -4,10 +4,9 @@ import { Theme } from '@/styles/themes'
 import { LoggerSetup } from '@productive-codebases/toolbox'
 
 /**
- * ReactToolbox providers.
+ * Define the different parameters that will be passed to IProviderValue.
  */
-
-export interface IReactToolboxProviderConfiguration<
+export interface IProviderConfiguration<
   TLoggerMapping extends object = typeof loggerMapping,
   TTheme = Theme,
   TRoles = Roles,
@@ -19,8 +18,11 @@ export interface IReactToolboxProviderConfiguration<
   portalNames: TPortalNames
 }
 
-export interface IReactToolboxProvider<
-  TReactToolboxProviderConfiguration extends IReactToolboxProviderConfiguration
+/**
+ * Define the interface of the value passed to the Provider.
+ */
+export interface IProviderValue<
+  TReactToolboxProviderConfiguration extends IProviderConfiguration
 > {
   loggerSetup: TReactToolboxProviderConfiguration['loggerSetup']
   theme: TReactToolboxProviderConfiguration['theme']

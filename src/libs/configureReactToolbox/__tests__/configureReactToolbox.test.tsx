@@ -19,11 +19,11 @@ import {
 describe('configureReactToolbox', () => {
   it('should expose toolbox A in the context A', async () => {
     const Component = (
-      <ToolboxAComponents.ReactToolboxProvider
-        configuration={toolboxAProviderConfiguration}
+      <ToolboxAComponents.ProviderNamedContext
+        value={toolboxAProviderConfiguration}
       >
         <SayHelloA />
-      </ToolboxAComponents.ReactToolboxProvider>
+      </ToolboxAComponents.ProviderNamedContext>
     )
 
     render(Component)
@@ -39,11 +39,11 @@ describe('configureReactToolbox', () => {
 
   it('should expose toolbox B in the context B', async () => {
     const Component = (
-      <ToolboxBComponents.ReactToolboxProvider
-        configuration={toolboxBProviderConfiguration}
+      <ToolboxBComponents.ProviderNamedContext
+        value={toolboxBProviderConfiguration}
       >
         <SayHelloB />
-      </ToolboxBComponents.ReactToolboxProvider>
+      </ToolboxBComponents.ProviderNamedContext>
     )
 
     render(Component)
@@ -59,11 +59,11 @@ describe('configureReactToolbox', () => {
 
   it('should expose toolbox C in the context C', async () => {
     const Component = (
-      <ToolboxCComponents.ReactToolboxProvider
-        configuration={toolboxCProviderConfiguration}
+      <ToolboxCComponents.ProviderNamedContext
+        value={toolboxCProviderConfiguration}
       >
         <SayHelloC />
-      </ToolboxCComponents.ReactToolboxProvider>
+      </ToolboxCComponents.ProviderNamedContext>
     )
 
     render(Component)
@@ -77,23 +77,23 @@ describe('configureReactToolbox', () => {
     )
   })
 
-  it('should expose all toolboxes when used in all contextes', async () => {
+  it('should expose all toolboxes when used in all contexts', async () => {
     const Component = (
-      <ToolboxCComponents.ReactToolboxProvider
-        configuration={toolboxCProviderConfiguration}
+      <ToolboxCComponents.ProviderNamedContext
+        value={toolboxCProviderConfiguration}
       >
-        <ToolboxAComponents.ReactToolboxProvider
-          configuration={toolboxAProviderConfiguration}
+        <ToolboxAComponents.ProviderNamedContext
+          value={toolboxAProviderConfiguration}
         >
-          <ToolboxBComponents.ReactToolboxProvider
-            configuration={toolboxBProviderConfiguration}
+          <ToolboxBComponents.ProviderNamedContext
+            value={toolboxBProviderConfiguration}
           >
             <SayHelloA />
             <SayHelloB />
             <SayHelloC />
-          </ToolboxBComponents.ReactToolboxProvider>
-        </ToolboxAComponents.ReactToolboxProvider>
-      </ToolboxCComponents.ReactToolboxProvider>
+          </ToolboxBComponents.ProviderNamedContext>
+        </ToolboxAComponents.ProviderNamedContext>
+      </ToolboxCComponents.ProviderNamedContext>
     )
 
     render(Component)

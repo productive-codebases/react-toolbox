@@ -1,22 +1,31 @@
 import { ContainerFlexExamples } from './ContainerFlexExamples'
-import { AppReactToolboxComponents } from '@/SampleApp/libs/ReactToolbox'
+import {
+  ContainerFlex,
+  Portal,
+  PortalPlaceHolder,
+  useAppContext,
+  useAppLogger,
+  useAppTheme
+} from '@/SampleApp/libs/ReactToolbox'
 
 export interface IPage1Props {}
 
 export function Page1(props: IPage1Props) {
+  const valueAppContext = useAppContext()
+  const theme = useAppTheme()
+  const logger = useAppLogger().newLogger('SampleApp')('components')
+
+  logger('info')('App context: %o', valueAppContext)
+  logger('info')('App theme: %o', theme)
+
   return (
     <>
-      <AppReactToolboxComponents.ContainerFlex
-        name="Layout"
-        flexJustifyContent="space-between"
-      >
+      <ContainerFlex name="Layout" flexJustifyContent="space-between">
         <ContainerFlexExamples />
-        <AppReactToolboxComponents.PortalPlaceHolder name="rightSideBar" />
-      </AppReactToolboxComponents.ContainerFlex>
+        <PortalPlaceHolder name="rightSideBar" />
+      </ContainerFlex>
 
-      <AppReactToolboxComponents.Portal name="rightSideBar">
-        Here the content of PortalExample1
-      </AppReactToolboxComponents.Portal>
+      <Portal name="rightSideBar">Here the content of PortalExample1</Portal>
     </>
   )
 }

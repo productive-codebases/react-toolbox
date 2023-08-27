@@ -1,15 +1,10 @@
-import {
-  appProviderConfiguration,
-  AppReactToolboxComponents
-} from './libs/ReactToolbox'
+import { ProviderApp } from './libs/ReactToolbox'
 import { Page1 } from './pages/Page1'
 
 export function SampleApp() {
   return (
-    <AppReactToolboxComponents.ReactToolboxProvider
-      configuration={appProviderConfiguration}
-    >
+    <ProviderApp>
       <Page1 />
-    </AppReactToolboxComponents.ReactToolboxProvider>
+    </ProviderApp>
   )
 }

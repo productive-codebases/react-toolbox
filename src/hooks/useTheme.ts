@@ -1,20 +1,23 @@
-import { configureUseReactToolboxContext } from './useReactToolboxContext'
-import { IReactToolboxProviderConfiguration } from '..'
+import { INamedContext } from '@/libs/namedContext/types'
+import { IProviderConfiguration, IProviderValue } from '@/types'
 
 /**
  * Return the theme from the Provider.
  */
 export function configureUseTheme<
-  TReactToolboxProviderConfiguration extends IReactToolboxProviderConfiguration
->(contextName: string) {
+  TReactToolboxProviderConfiguration extends IProviderConfiguration
+>(
+  namedContext: INamedContext<
+    IProviderValue<TReactToolboxProviderConfiguration>
+  >
+) {
   return function useTheme() {
-    const context =
-      configureUseReactToolboxContext<TReactToolboxProviderConfiguration>(
-        contextName
-      )()
+    const context = namedContext.useNamedContext()
 
     if (!context.theme) {
-      throw new Error('No theme found in ProviderContext')
+      throw new Error(
+        `No theme has been defined in React Toolbox's configuration`
+      )
     }
 
     return context.theme

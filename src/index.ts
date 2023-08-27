@@ -34,6 +34,12 @@ export type {
 } from './libs/dataTestAttribute/type'
 
 /**
+ * Named context
+ */
+
+export { configureNamedContext } from './libs/namedContext'
+
+/**
  * Theme
  */
 
@@ -50,9 +56,6 @@ export type { IContainerFlexProps } from './components/ContainerFlex/types'
  * Types
  */
 
-export type {
-  IReactToolboxProviderConfiguration,
-  IReactToolboxProvider as IReactToolboxProviderContext
-} from './types'
+export type { IProviderConfiguration, IProviderValue } from './types'
 
 export type { WithInnerRef } from './types/reactHelpers'
