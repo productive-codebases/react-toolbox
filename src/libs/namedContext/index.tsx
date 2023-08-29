@@ -52,6 +52,7 @@ export function createNamedContext<TContextValue>(
   }
 
   return {
+    context,
     contextName,
     ProviderNamedContext,
     useNamedContext

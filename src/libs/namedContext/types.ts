@@ -20,12 +20,14 @@ export type NamedContextsRecord<TContextValue = any> = Map<
  * Named context interface.
  */
 export interface INamedContext<TContextValue> {
+  /** React context */
+  context: React.Context<Maybe<TContextValue>>
   /** Name of the context */
   contextName: string
-  /** Interface of the `ProviderNamedContext` component */
+  /** Interface of the named context's Provider */
   ProviderNamedContext: (
     props: INamedProviderProps<TContextValue>
   ) => JSX.Element
-  /** Interface of the `useNamedContext` hook */
+  /** Interface of the name context's hook */
   useNamedContext: () => TContextValue
 }
