@@ -26,22 +26,9 @@ export function createConfiguration<TConfigurationParametersExtended>(
   extendedConfiguration?: PartialDeep<
     IConfigurationParameters & TConfigurationParametersExtended
   >
-) {
-  const mergedConfiguration = deepMerge([
+): IConfigurationParameters & TConfigurationParametersExtended {
+  return deepMerge([
     defaultConfiguration,
     extendedConfiguration
   ]) as IConfigurationParameters & TConfigurationParametersExtended
-
-  type ExtendedLoggerMapping = (IConfigurationParameters &
-    TConfigurationParametersExtended)['loggerMapping']
-
-  return deepMerge([
-    mergedConfiguration,
-    {
-      /** logger setup from the provided logger namespace */
-      loggerSetup: setupLogger<ExtendedLoggerMapping>(
-        mergedConfiguration.loggerMapping as ExtendedLoggerMapping
-      )
-    }
-  ])
 }

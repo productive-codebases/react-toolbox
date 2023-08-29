@@ -8,7 +8,6 @@ describe('createConfiguration()', () => {
     expect(defaultConfiguration).toHaveProperty('theme')
     expect(defaultConfiguration).toHaveProperty('roles')
     expect(defaultConfiguration).toHaveProperty('portalNames')
-    expect(defaultConfiguration).toHaveProperty('loggerSetup')
   })
 
   it('should extends the default configuration', () => {
@@ -46,9 +45,5 @@ describe('createConfiguration()', () => {
     expect(defaultConfiguration.roles).toHaveProperty('container/modal')
 
     expect(defaultConfiguration.portalNames).toHaveProperty('rightSideBar')
-
-    expect(
-      defaultConfiguration.loggerSetup.loggerMapping.AppSample
-    ).toHaveProperty('components')
   })
 })
