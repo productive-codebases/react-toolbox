@@ -32,7 +32,7 @@ const appConfiguration = createConfiguration({
  */
 export const {
   components: {
-    ProviderNamedContext: ProviderApp,
+    ProviderNamedContext: AppProvider,
     ContainerFlex,
     Portal,
     PortalPlaceHolder

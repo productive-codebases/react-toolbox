@@ -1,10 +1,10 @@
-import { ProviderApp } from './libs/ReactToolbox'
+import { AppProvider } from './libs/ReactToolbox'
 import { Page1 } from './pages/Page1'
 
 export function AppSample() {
   return (
-    <ProviderApp>
+    <AppProvider>
       <Page1 />
-    </ProviderApp>
+    </AppProvider>
   )
 }
