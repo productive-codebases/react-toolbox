@@ -1,13 +1,14 @@
 import { configureUseLogger } from '@/hooks/useLogger'
-import { IReactToolboxProviderConfiguration } from '@/types'
+import { IProviderValue, IConfigurationParameters } from '@/types'
 import { useEffect, useMemo } from 'react'
 import { createPortal } from 'react-dom'
 import { usePortal } from './usePortal'
+import { INamedContext } from '@/libs/namedContext/types'
 
 export interface IPlaceHolderPortalProps<
-  TReactToolboxProviderConfiguration extends IReactToolboxProviderConfiguration
+  TReactToolboxConfiguration extends IConfigurationParameters
 > {
-  name: keyof TReactToolboxProviderConfiguration['portalNames']
+  name: keyof TReactToolboxConfiguration['portalNames']
   debug?: boolean
   children?: React.ReactNode
 }
@@ -19,12 +20,12 @@ export interface IPlaceHolderPortalProps<
  * Return the portal object.
  */
 export function configurePortal<
-  TReactToolboxProviderConfiguration extends IReactToolboxProviderConfiguration
->(contextName: string) {
+  TReactToolboxConfiguration extends IConfigurationParameters
+>(namedContext: INamedContext<IProviderValue<TReactToolboxConfiguration>>) {
   return function Portal(
-    props: IPlaceHolderPortalProps<TReactToolboxProviderConfiguration>
+    props: IPlaceHolderPortalProps<TReactToolboxConfiguration>
   ) {
-    const useLogger = configureUseLogger(contextName)
+    const useLogger = configureUseLogger(namedContext)
     const logger = useLogger().newLogger('ReactToolBox')('components/Portal')
 
     const { portalUid, placeHolderPortalIds } = usePortal(props.name)

@@ -1,5 +1,3 @@
-import { setupLogger } from '@productive-codebases/toolbox'
-
 export const loggerMapping = {
   ReactToolBox: {
     'components/ContainerFlex': 'components/ContainerFlex',
@@ -10,4 +8,4 @@ export const loggerMapping = {
   }
 }
 
-export const loggerSetup = setupLogger(loggerMapping)
+export type LoggerMapping = typeof loggerMapping
