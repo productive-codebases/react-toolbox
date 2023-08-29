@@ -41,8 +41,8 @@ const appConfiguration = createConfiguration({
   },
   theme: {
     color: {
-      red: 'red',
-      blue: 'blue'
+      primary: 'blue',
+      secondary: 'silver'
     },
     sizes: {
       small: '5px',
@@ -51,7 +51,7 @@ const appConfiguration = createConfiguration({
     }
   },
   roles: {
-    customContainer: 'customContainer'
+    'container/modal': 'container/modal'
   },
   portalNames: {
     default: 'default',
