@@ -1,8 +1,8 @@
 import { configure } from '@/libs/configurator'
-import { LoggerMapping } from '@/libs/configurator/defaultConfiguration/loggerMapping'
-import { PortalNames } from '@/libs/configurator/defaultConfiguration/portals'
-import { Roles } from '@/libs/configurator/defaultConfiguration/roles'
-import { Theme } from '@/libs/configurator/defaultConfiguration/theme'
+import { LoggerMapping } from '@/libs/configurator/createConfiguration/loggerMapping'
+import { PortalNames } from '@/libs/configurator/createConfiguration/portals'
+import { Roles } from '@/libs/configurator/createConfiguration/roles'
+import { Theme } from '@/libs/configurator/createConfiguration/theme'
 
 /**
  * Interface of the value passed to the Provider.

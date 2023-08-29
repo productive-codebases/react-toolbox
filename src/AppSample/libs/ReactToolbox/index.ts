@@ -1,5 +1,5 @@
 import { configure } from '@/libs/configurator'
-import { createConfiguration } from '@/libs/configurator/defaultConfiguration'
+import { createConfiguration } from '@/libs/configurator/createConfiguration'
 
 const appConfiguration = createConfiguration({
   loggerMapping: {

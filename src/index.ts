@@ -12,7 +12,7 @@ export type {
 export {
   defaultConfiguration,
   createConfiguration
-} from './libs/configurator/defaultConfiguration'
+} from './libs/configurator/createConfiguration'
 
 /**
  * Components

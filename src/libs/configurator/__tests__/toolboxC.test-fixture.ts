@@ -1,6 +1,7 @@
-import { configure } from '..'
-import { createConfiguration } from '../defaultConfiguration'
 /* eslint-disable @typescript-eslint/naming-convention */
+
+import { configure } from '..'
+import { createConfiguration } from '../createConfiguration'
 
 export type ToolboxCProviderConfiguration = typeof toolboxCProviderConfiguration
 
