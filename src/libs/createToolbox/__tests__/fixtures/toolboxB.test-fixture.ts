@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 
-import { configure } from '..'
-import { createConfiguration } from '../createConfiguration'
+import { createToolbox } from '../..'
+import { createConfiguration } from '../../createConfiguration'
 
 export type ToolboxBProviderConfiguration = typeof toolboxBProviderConfiguration
 
@@ -18,4 +18,4 @@ export const {
   components: ToolboxBComponents,
   hooks: toolboxBHooks,
   helpers: toolboxBHelpers
-} = configure<ToolboxBProviderConfiguration>('contextB')
+} = createToolbox('contextB', toolboxBProviderConfiguration)

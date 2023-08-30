@@ -3,24 +3,29 @@ import { configurePortal } from '@/components/Portal'
 import { configurePortalPlaceHolder } from '@/components/Portal/PortalPlaceHolder'
 import { configureUseLogger } from '@/hooks/useLogger'
 import { configureUseTheme } from '@/hooks/useTheme'
-import { IProviderValue, IConfigurationParameters } from '@/types'
+import { IConfiguration, IProviderValue, Toolbox } from '@/types'
 import {
   configureGetDataTestAttributeProp,
   configureGetDataTestAttributeValue
 } from '../dataTestAttribute/hooks'
 import { createNamedContext } from '../namedContext'
+import { createConfiguration } from './createConfiguration'
 
 /**
- * Configure React Toolbox with a defined IReactToolboxProviderConfiguration configuration.
+ * Create a new React Toolbox with a defined IReactToolboxProviderConfiguration configuration.
  */
-export function configure<
-  TReactToolboxConfiguration extends IConfigurationParameters
->(contextName: string, contextValue?: TReactToolboxConfiguration) {
-  const namedContext = createNamedContext<
-    IProviderValue<TReactToolboxConfiguration>
-  >(contextName, contextValue)
+export function createToolbox<TConfiguration extends IConfiguration>(
+  name: string,
+  configuration?: TConfiguration
+): Toolbox<TConfiguration> {
+  const namedContext = createNamedContext<IProviderValue<TConfiguration>>(
+    name,
+    configuration
+  )
 
   return {
+    name,
+    configuration: configuration ?? createConfiguration(),
     components: {
       ProviderNamedContext: namedContext.ProviderNamedContext,
       ContainerFlex: configureContainerFlex(namedContext),
@@ -34,11 +39,9 @@ export function configure<
     },
     helpers: {
       getDataTestAttributeValue:
-        configureGetDataTestAttributeValue<
-          TReactToolboxConfiguration['roles']
-        >(),
+        configureGetDataTestAttributeValue<TConfiguration['roles']>(),
       getDataTestAttributeProp:
-        configureGetDataTestAttributeProp<TReactToolboxConfiguration['roles']>()
+        configureGetDataTestAttributeProp<TConfiguration['roles']>()
     }
   }
 }

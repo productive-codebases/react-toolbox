@@ -2,17 +2,14 @@
  * Configuration
  */
 
-export { configure } from './libs/configurator'
-export type {
-  IConfigurationParameters,
-  IProviderValue,
-  Configuration
-} from './types'
+export { createToolbox } from './libs/createToolbox'
+export type { Toolbox } from './types'
 
 export {
   defaultConfiguration,
   createConfiguration
-} from './libs/configurator/createConfiguration'
+} from './libs/createToolbox/createConfiguration'
+export type { Configuration, IConfiguration, IProviderValue } from './types'
 
 /**
  * Components

@@ -1,14 +1,14 @@
 import { INamedContext } from '@/libs/namedContext/types'
-import { IProviderValue, IConfigurationParameters } from '@/types'
+import { IProviderValue, IConfiguration } from '@/types'
 import { setupLogger } from '@productive-codebases/toolbox'
 import { useMemo } from 'react'
 
 /**
  * Return logger from the Provider.
  */
-export function configureUseLogger<
-  TReactToolboxConfiguration extends IConfigurationParameters
->(namedContext: INamedContext<IProviderValue<TReactToolboxConfiguration>>) {
+export function configureUseLogger<TConfiguration extends IConfiguration>(
+  namedContext: INamedContext<IProviderValue<TConfiguration>>
+) {
   return function useLogger() {
     const context = namedContext.useNamedContext()
 

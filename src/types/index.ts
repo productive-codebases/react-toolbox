@@ -1,24 +1,22 @@
-import { configure } from '@/libs/configurator'
-import { LoggerMapping } from '@/libs/configurator/createConfiguration/loggerMapping'
-import { PortalNames } from '@/libs/configurator/createConfiguration/portals'
-import { Roles } from '@/libs/configurator/createConfiguration/roles'
-import { Theme } from '@/libs/configurator/createConfiguration/theme'
-
-/**
- * Interface of the value passed to the Provider.
- */
-export interface IProviderValue<
-  TConfiguration extends IConfigurationParameters
-> {
-  loggerMapping: TConfiguration['loggerMapping']
-  theme: TConfiguration['theme']
-  portalNames: TConfiguration['portalNames']
-}
+import { INamedContext } from '..'
+import { configureContainerFlex } from '@/components/ContainerFlex'
+import { configurePortal } from '@/components/Portal'
+import { configurePortalPlaceHolder } from '@/components/Portal/PortalPlaceHolder'
+import { configureUseLogger } from '@/hooks/useLogger'
+import { configureUseTheme } from '@/hooks/useTheme'
+import { LoggerMapping } from '@/libs/createToolbox/createConfiguration/loggerMapping'
+import { PortalNames } from '@/libs/createToolbox/createConfiguration/portals'
+import { Roles } from '@/libs/createToolbox/createConfiguration/roles'
+import { Theme } from '@/libs/createToolbox/createConfiguration/theme'
+import {
+  configureGetDataTestAttributeProp,
+  configureGetDataTestAttributeValue
+} from '@/libs/dataTestAttribute/hooks'
 
 /**
  * Define the different parameters that will be passed to IProviderValue.
  */
-export interface IConfigurationParameters<
+export interface IConfiguration<
   TLoggerMapping = LoggerMapping,
   TTheme = Theme,
   TRoles = Roles,
@@ -31,7 +29,48 @@ export interface IConfigurationParameters<
 }
 
 /**
- * Configuration returned by the configurator.
+ * Interface of the value passed to the Provider.
  */
-export type Configuration<TConfiguration extends IConfigurationParameters> =
-  ReturnType<typeof configure<TConfiguration>>
+export interface IProviderValue<TConfiguration extends IConfiguration> {
+  loggerMapping: TConfiguration['loggerMapping']
+  theme: TConfiguration['theme']
+  portalNames: TConfiguration['portalNames']
+}
+
+/**
+ * Configuration returned by `createConfiguration`.
+ */
+export type Configuration<TConfiguration> = IConfiguration & TConfiguration
+
+/**
+ * Toolbox returned by `createToolbox`.
+ */
+export type Toolbox<TConfiguration extends IConfiguration> = {
+  name: string
+  configuration: Configuration<TConfiguration>
+  components: {
+    ProviderNamedContext: INamedContext<
+      IProviderValue<TConfiguration>
+    >['ProviderNamedContext']
+    ContainerFlex: ReturnType<typeof configureContainerFlex<TConfiguration>>
+    Portal: ReturnType<typeof configurePortal<TConfiguration>>
+    PortalPlaceHolder: ReturnType<
+      typeof configurePortalPlaceHolder<TConfiguration>
+    >
+  }
+  hooks: {
+    useNamedContext: INamedContext<
+      IProviderValue<TConfiguration>
+    >['useNamedContext']
+    useLogger: ReturnType<typeof configureUseLogger<TConfiguration>>
+    useTheme: ReturnType<typeof configureUseTheme<TConfiguration>>
+  }
+  helpers: {
+    getDataTestAttributeValue: ReturnType<
+      typeof configureGetDataTestAttributeValue<TConfiguration['roles']>
+    >
+    getDataTestAttributeProp: ReturnType<
+      typeof configureGetDataTestAttributeProp<TConfiguration['roles']>
+    >
+  }
+}
