@@ -1,4 +1,4 @@
-import { toolboxCHooks, toolboxCHelpers } from './toolboxC.test-fixture'
+import { toolboxCHooks, toolboxCHelpers } from './toolboxC.test-helper'
 
 export interface ISayHelloProps {}
 

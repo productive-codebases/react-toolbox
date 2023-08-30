@@ -15,8 +15,7 @@ module.exports = {
     '/node_modules/',
     'dist',
     '.cy.',
-    'test-fixture',
-    'test-helpers'
+    'test-helper'
   ],
   collectCoverage: isCI,
   coverageReporters: ['lcov'],
