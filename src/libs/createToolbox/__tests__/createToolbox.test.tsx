@@ -56,9 +56,7 @@ describe('createToolbox', () => {
       portalNames: {
         toolboxPanel: 'toolboxPanel'
       },
-      misc: {
-        storeA: new StoreA()
-      }
+      storeA: new StoreA()
     })
 
     let toolbox: Toolbox<typeof configuration>
@@ -157,13 +155,11 @@ describe('createToolbox', () => {
       render(Component)
     })
 
-    it('should allow to extends the misc configuration', async () => {
+    it('should allow to extends the configuration', async () => {
       expect.assertions(1)
 
       function Expectations() {
-        expect(toolbox.hooks.useNamedContext().misc.storeA).toBeInstanceOf(
-          StoreA
-        )
+        expect(toolbox.hooks.useNamedContext().storeA).toBeInstanceOf(StoreA)
 
         return <div>Empty</div>
       }

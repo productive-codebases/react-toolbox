@@ -20,25 +20,19 @@ export interface IConfiguration<
   TLoggerMapping = LoggerMapping,
   TTheme = Theme,
   TRoles = Roles,
-  TPortalNames = PortalNames,
-  TMisc = {}
+  TPortalNames = PortalNames
 > {
   loggerMapping: TLoggerMapping
   theme: TTheme
   roles: TRoles
   portalNames: TPortalNames
-  misc: TMisc
 }
 
 /**
  * Interface of the value passed to the Provider.
  */
-export interface IProviderValue<TConfiguration extends IConfiguration> {
-  loggerMapping: TConfiguration['loggerMapping']
-  theme: TConfiguration['theme']
-  roles: TConfiguration['roles']
-  portalNames: TConfiguration['portalNames']
-  misc: TConfiguration['misc']
+export type IProviderValue<TConfiguration extends IConfiguration> = {
+  [K in keyof TConfiguration]: TConfiguration[K]
 }
 
 /**
