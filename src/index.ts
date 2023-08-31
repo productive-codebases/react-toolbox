@@ -41,6 +41,9 @@ export type {
   ReactHTMLAttributes
 } from './libs/forwardProps/types'
 
+// hooks
+export { useForwardedRef } from './hooks/useForwardedRef'
+
 /**
  * Types
  */
