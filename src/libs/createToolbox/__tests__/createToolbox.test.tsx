@@ -9,7 +9,6 @@ import SayHelloC from './helpers/SayHelloC.test-helper'
 import { ToolboxAComponents } from './helpers/toolboxA.test-helper'
 import { ToolboxBComponents } from './helpers/toolboxB.test-helper'
 import { ToolboxCComponents } from './helpers/toolboxC.test-helper'
-import ToolboxKeys from './helpers/ToolboxKeys.test-helper'
 
 describe('createToolbox', () => {
   describe('Toolbox creation', () => {
@@ -43,13 +42,23 @@ describe('createToolbox', () => {
     }
 
     const configuration = createConfiguration({
+      loggerMapping: {
+        toolboxA: {
+          components: 'components'
+        }
+      },
       theme: {
         toolbox: 'toolboxA'
       },
       roles: {
         'toolboxA/name': 'toolboxA/name'
       },
-      storeA: new StoreA()
+      portalNames: {
+        toolboxPanel: 'toolboxPanel'
+      },
+      misc: {
+        storeA: new StoreA()
+      }
     })
 
     let toolbox: Toolbox<typeof configuration>
@@ -58,20 +67,114 @@ describe('createToolbox', () => {
       toolbox = createToolbox('app', configuration)
     })
 
-    it('should allow to extends the configuration', async () => {
-      expect(toolbox.configuration).toHaveProperty('storeA')
-    })
+    it('should allow to extends the loggerMapping configuration', async () => {
+      expect.assertions(2)
 
-    it('should expose the extended value via the context', async () => {
+      function Expectations() {
+        expect(
+          toolbox.hooks.useNamedContext().loggerMapping.toolboxA.components
+        ).toBe('components')
+
+        expect(
+          toolbox.hooks.useLogger().newLogger('toolboxA')('components')('info')
+        ).toBeDefined()
+
+        return <div>Empty</div>
+      }
+
       const Component = (
         <toolbox.components.ProviderNamedContext>
-          <ToolboxKeys toolbox={toolbox} />
+          <Expectations />
         </toolbox.components.ProviderNamedContext>
       )
 
       render(Component)
+    })
 
-      expect(screen.getByTestId('ToolboxKeys')).toHaveTextContent('storeA')
+    it('should allow to extends the theme configuration', async () => {
+      expect.assertions(2)
+
+      function Expectations() {
+        expect(toolbox.hooks.useNamedContext().theme.toolbox).toBe('toolboxA')
+
+        expect(toolbox.hooks.useTheme().toolbox).toBe('toolboxA')
+
+        return <div>Empty</div>
+      }
+
+      const Component = (
+        <toolbox.components.ProviderNamedContext>
+          <Expectations />
+        </toolbox.components.ProviderNamedContext>
+      )
+
+      render(Component)
+    })
+
+    it('should allow to extends the roles configuration', async () => {
+      expect.assertions(2)
+
+      function Expectations() {
+        expect(toolbox.hooks.useNamedContext().roles['toolboxA/name']).toBe(
+          'toolboxA/name'
+        )
+
+        expect(
+          toolbox.helpers.getDataTestAttributeProp({
+            role: 'toolboxA/name'
+          })
+        ).toEqual({ 'data-attr-test': 'toolboxA/name' })
+
+        return <div>Empty</div>
+      }
+
+      const Component = (
+        <toolbox.components.ProviderNamedContext>
+          <Expectations />
+        </toolbox.components.ProviderNamedContext>
+      )
+
+      render(Component)
+    })
+
+    it('should allow to extends the portalNames configuration', async () => {
+      expect.assertions(1)
+
+      function Expectations() {
+        expect(toolbox.hooks.useNamedContext().portalNames.toolboxPanel).toBe(
+          'toolboxPanel'
+        )
+
+        return <toolbox.components.PortalPlaceHolder name="toolboxPanel" />
+      }
+
+      const Component = (
+        <toolbox.components.ProviderNamedContext>
+          <Expectations />
+        </toolbox.components.ProviderNamedContext>
+      )
+
+      render(Component)
+    })
+
+    it('should allow to extends the misc configuration', async () => {
+      expect.assertions(1)
+
+      function Expectations() {
+        expect(toolbox.hooks.useNamedContext().misc.storeA).toBeInstanceOf(
+          StoreA
+        )
+
+        return <div>Empty</div>
+      }
+
+      const Component = (
+        <toolbox.components.ProviderNamedContext>
+          <Expectations />
+        </toolbox.components.ProviderNamedContext>
+      )
+
+      render(Component)
     })
   })
 

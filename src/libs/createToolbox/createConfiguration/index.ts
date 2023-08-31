@@ -12,7 +12,8 @@ export const defaultConfiguration: IConfiguration = {
   loggerMapping,
   theme,
   roles,
-  portalNames
+  portalNames,
+  misc: {}
 }
 
 /**

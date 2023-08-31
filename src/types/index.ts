@@ -20,12 +20,14 @@ export interface IConfiguration<
   TLoggerMapping = LoggerMapping,
   TTheme = Theme,
   TRoles = Roles,
-  TPortalNames = PortalNames
+  TPortalNames = PortalNames,
+  TMisc = {}
 > {
   loggerMapping: TLoggerMapping
   theme: TTheme
   roles: TRoles
   portalNames: TPortalNames
+  misc: TMisc
 }
 
 /**
@@ -34,7 +36,9 @@ export interface IConfiguration<
 export interface IProviderValue<TConfiguration extends IConfiguration> {
   loggerMapping: TConfiguration['loggerMapping']
   theme: TConfiguration['theme']
+  roles: TConfiguration['roles']
   portalNames: TConfiguration['portalNames']
+  misc: TConfiguration['misc']
 }
 
 /**
