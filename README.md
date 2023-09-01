@@ -8,27 +8,17 @@ A set of React components and helpers for productive codebases.
 npm i @productive-codebases/react-toolbox --save
 ```
 
+## Summary
+
+React Toolbox is a compact library offering shared components and tools for React. It's customizable and extensible, enabling uniform setups across your projects.
+
 ## Getting started
 
 ### Create a new configuration
 
-The library offers configurable components and helpers through TypeScript generics, enabling comprehensive and precise type definitions. To achieve this, you need to "configure" the toolbox. The structure of the toolbox interface is defined by `IReactToolboxConfigurationParameters`:
+A configuration is an object that extends the [`IConfiguration`](https://github.com/productive-codebases/react-toolbox/blob/main/src/types/index.ts#L19-L29) interface.
 
-```ts
-export interface IReactToolboxConfigurationParameters<
-  TLoggerMapping = LoggerMapping,
-  TTheme = Theme,
-  TRoles = Roles,
-  TPortalNames = PortalNames
-> {
-  loggerMapping: TLoggerMapping
-  theme: TTheme
-  roles: TRoles
-  portalNames: TPortalNames
-}
-```
-
-The toolbox encompasses a range of features such as logger namespaces, themes, roles (utilized for end-to-end testing or accessibility situations), namespaces for (React) portals, and more. It's possible to expand upon each configurable parameter with your custom values by generating a new configuration:
+Example:
 
 ```ts
 import { createConfiguration } from '@productive-codebases/react-toolbox'
@@ -36,7 +26,8 @@ import { createConfiguration } from '@productive-codebases/react-toolbox'
 const appConfiguration = createConfiguration({
   loggerMapping: {
     AppSample: {
-      components: 'components'
+      components: 'components',
+      stores: 'stores',
     }
   },
   theme: {
@@ -51,22 +42,31 @@ const appConfiguration = createConfiguration({
     }
   },
   roles: {
+    'container/portal': 'container/portal',
     'container/modal': 'container/modal'
   },
   portalNames: {
-    default: 'default',
+    leftNavigation: 'leftNavigation',
     rightSideBar: 'rightSideBar'
   }
 })
 ```
 
+Create the toolbox:
+
 ```ts
-const toolbox = configure('app', appConfiguration)
+export const toolbox = createToolbox('app', appConfiguration)
 ```
+
+That's it! You have now your toolbox exposing various components, hooks and functions bounded to the configuration parameters.
+
+Usage example:
+
+![Autocomplete](./documentation/static/example_autocomplete1.png)
 
 ### Destructure for easier imports
 
-The toolbox comprises numerous elements, and a more effective approach to make its contents accessible within your application involves customizing variables for simplified imports:
+To enhance import clarity, you can destructure the toolbox into named exports.
 
 ```ts
 // myapp/libs/reactToolbox.ts
@@ -87,15 +87,59 @@ export const {
     getDataTestAttributeProp: getAppDataTestAttributeProp,
     getDataTestAttributeValue: getAppDataTestAttributeValue
   }
-} = configure('app', appConfiguration)
+} = createToolbox('app', appConfiguration)
 ```
 
-You can now effortlessly import anything in a manner similar to:
+And just import as it:
 
 ```ts
-import { useAppContext } from '@/myapp/libs/reactToolbox'
+import { useAppTheme } from '@/myapp/libs/reactToolbox'
 ```
 
-## Exposed tooling
+Usage example:
+
+![Autocomplete](./documentation/static/example_autocomplete2.png)
+
+## Toolbox exports
+
+### Components
+
+#### ProviderNameContext
+
+WIP
+
+#### ContainerFlex
+
+WIP
+
+#### PortalPlaceHolder
+
+WIP
+
+#### Portal
+
+WIP
+
+### Hooks
+
+#### useNamedContext
+
+WIP
+
+#### useLogger
+
+WIP
+
+#### useTheme
+
+WIP
+
+### Helpers
+
+#### getDataTestAttributeValue
+
+WIP
+
+#### getDataTestAttributeProp
 
 WIP
