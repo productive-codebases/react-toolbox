@@ -1,4 +1,4 @@
-import { IConfigurationParameters } from '@/types'
+import { IConfiguration } from '@/types'
 import {
   addSetValueToMap,
   removeSetValueToMap
@@ -19,15 +19,13 @@ export function useComponentId(prefix: string) {
 /**
  * Return the PortalUid to be used in a PlaceHolder component.
  */
-export function usePortalPlaceHolder<
-  TReactToolboxConfiguration extends IConfigurationParameters
->(
-  placeHolderName: keyof TReactToolboxConfiguration['portalNames']
-): IPlaceHolder<keyof TReactToolboxConfiguration['portalNames']> {
+export function usePortalPlaceHolder<TConfiguration extends IConfiguration>(
+  placeHolderName: keyof TConfiguration['portalNames']
+): IPlaceHolder<keyof TConfiguration['portalNames']> {
   const placeHolderUid = useComponentId('PortalPlaceHolder')
 
   const placeHolderPortalIds_ = placeHolderPortalIds as PlaceHolderIds<
-    keyof TReactToolboxConfiguration['portalNames']
+    keyof TConfiguration['portalNames']
   >
 
   const portalUid = useMemo(() => {

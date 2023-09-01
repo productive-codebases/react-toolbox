@@ -1,5 +1,5 @@
-import { configure } from '@/libs/configurator'
-import { createConfiguration } from '@/libs/configurator/createConfiguration'
+import { createToolbox } from '@/libs/createToolbox'
+import { createConfiguration } from '@/libs/createToolbox/createConfiguration'
 
 const appConfiguration = createConfiguration({
   loggerMapping: {
@@ -46,4 +46,4 @@ export const {
     getDataTestAttributeProp: getAppDataTestAttributeProp,
     getDataTestAttributeValue: getAppDataTestAttributeValue
   }
-} = configure('app', appConfiguration)
+} = createToolbox('app', appConfiguration)

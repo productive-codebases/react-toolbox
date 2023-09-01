@@ -11,21 +11,12 @@ module.exports = {
   moduleNameMapper: {
     '^@/(.*)$': '<rootDir>/src/$1'
   },
-  testPathIgnorePatterns: [
-    '/node_modules/',
-    'dist',
-    '.cy.',
-    'test-fixture',
-    'test-helpers'
-  ],
+  testPathIgnorePatterns: ['/node_modules/', 'dist', '.cy.', 'test-helper'],
   collectCoverage: isCI,
   coverageReporters: ['lcov'],
   collectCoverageFrom: ['**/*.{ts,tsx}', '!dist/**', '!**/node_modules/**'],
   testEnvironment: 'jsdom',
   preset: 'ts-jest',
-  // setupFiles: [
-  //   './src/libs/tests/reactLibrarySetup.ts'
-  // ],
   setupFilesAfterEnv: ['./src/libs/tests/reactLibrarySetup.ts'],
   reporters: [
     'default',
