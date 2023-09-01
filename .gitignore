@@ -8,9 +8,11 @@ pnpm-debug.log*
 lerna-debug.log*
 
 node_modules
+junit
 dist
 dist-ssr
 *.local
+vite.config.ts.timestamp*
 
 # Editor directories and files
 .vscode/*
