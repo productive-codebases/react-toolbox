@@ -59,7 +59,7 @@ const Div = styled.div<IContainerFlexProps<any> & IHelpers>(props_ => {
       // Margins
       ...filterNullOrUndefinedValues({
         marginLeft: props.marginH && props.theme.sizes[props.marginH],
-        marginRight: props.marginV && props.theme.sizes[props.marginV]
+        marginRight: props.marginH && props.theme.sizes[props.marginH]
       }),
 
       ...filterNullOrUndefinedValues({
