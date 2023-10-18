@@ -1,5 +1,9 @@
 # Changelog
 
+## v0.1.2
+
+- Mitigate TS "type instantiation is excessively deep and possibly infinite" error by simplifying the input type of `createConfiguration`.
+
 ## v0.1.1
 
 - Fix ContainerFlex horizontal margins.
