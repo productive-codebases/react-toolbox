@@ -19,7 +19,7 @@ export const defaultConfiguration: IConfiguration = {
  * Create a custom React toolbox configuration from the default one.
  */
 export function createConfiguration<TConfiguration>(
-  extendedConfiguration?: PartialDeep<IConfiguration & TConfiguration>
+  extendedConfiguration?: TConfiguration
 ): Configuration<TConfiguration> {
   return deepMerge([
     defaultConfiguration,
