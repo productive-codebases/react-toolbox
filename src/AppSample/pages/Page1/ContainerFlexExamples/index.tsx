@@ -5,8 +5,8 @@ import {
   useAppTheme
 } from '@/AppSample/libs/ReactToolbox'
 import { buildVariants } from '@/styles/buildVariants'
+import styled from '@emotion/styled'
 import { useEffect, useRef } from 'react'
-import styled from 'styled-components'
 
 export interface IContainerFlexExamplesProps {}
 

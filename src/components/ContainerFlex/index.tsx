@@ -4,10 +4,10 @@ import { forwardProps } from '@/libs/forwardProps'
 import { filterNullOrUndefinedValues } from '@/libs/forwardProps/filterNullOrUndefinedValues'
 import { INamedContext } from '@/libs/namedContext/types'
 import { buildVariants } from '@/styles/buildVariants'
-import { IProviderValue, IConfiguration } from '@/types'
+import { IConfiguration, IProviderValue } from '@/types'
 import { WithInnerRef } from '@/types/reactHelpers'
+import styled from '@emotion/styled'
 import { Logger } from '@productive-codebases/toolbox'
-import styled from 'styled-components'
 import { IContainerFlexProps } from './types'
 
 interface IHelpers {

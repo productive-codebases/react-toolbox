@@ -1,5 +1,10 @@
 # Changelog
 
+## v0.2.0
+
+- Replace styled-components to emotion.
+  Motivated by the issues of v6 like spreading non-compatible props to DOM by default and lacking types.
+
 ## v0.1.2
 
 - Mitigate TS "type instantiation is excessively deep and possibly infinite" error by simplifying the input type of `createConfiguration`.

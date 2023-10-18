@@ -1,8 +1,8 @@
+import { CSSObject } from '@emotion/styled'
 import { newBuildVariants } from '@productive-codebases/build-variants'
-import { CSSObject } from 'styled-components'
 
 /**
- * Create a BuildVariants instance, typed to use styled-components's `CSSObject`s.
+ * Create a BuildVariants instance.
  */
 export function buildVariants<TProps extends object>(props: TProps) {
   return newBuildVariants<TProps, CSSObject>(props)
