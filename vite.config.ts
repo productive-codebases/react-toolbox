@@ -25,11 +25,7 @@ export default defineConfig({
       fileName: format => `react-toolbox.${format}.js`
     },
     rollupOptions: {
-      external: [...Object.keys(packageJson.peerDependencies)],
-      output: {
-        // Fix issues related to styled-components (https://github.com/styled-components/styled-components/issues/3700#issuecomment-1580761052)
-        interop: 'compat'
-      }
+      external: [...Object.keys(packageJson.peerDependencies)]
     }
   }
 })
