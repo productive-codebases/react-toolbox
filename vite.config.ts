@@ -18,6 +18,7 @@ export default defineConfig({
     sourcemap: true,
     outDir: 'dist',
     manifest: true,
+    minify: true,
     lib: {
       entry: resolve('src', 'index.ts'),
       name: 'react-toolbox',
@@ -25,7 +26,12 @@ export default defineConfig({
       fileName: format => `react-toolbox.${format}.js`
     },
     rollupOptions: {
-      external: [...Object.keys(packageJson.peerDependencies)]
+      external: [...Object.keys(packageJson.peerDependencies)],
+      output: {
+        // Fix issues related to `export default` when used in CJS environments (Jest).
+        // Typically those kind of errors: `Er.div is not a function`.
+        interop: 'compat'
+      }
     }
   }
 })

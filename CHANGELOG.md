@@ -1,5 +1,10 @@
 # Changelog
 
+## v0.2.1-beta
+
+- Try `interop: 'compat'` option to fix issues related to `export default` when used in CJS environments (Jest).
+Typically those kind of errors: `Er.div is not a function`.
+
 ## v0.2.0
 
 - Replace styled-components to emotion.
