@@ -81,9 +81,9 @@ describe('createToolbox', () => {
       }
 
       const Component = (
-        <toolbox.components.ProviderNamedContext>
+        <toolbox.components.Provider>
           <Expectations />
-        </toolbox.components.ProviderNamedContext>
+        </toolbox.components.Provider>
       )
 
       render(Component)
@@ -101,9 +101,9 @@ describe('createToolbox', () => {
       }
 
       const Component = (
-        <toolbox.components.ProviderNamedContext>
+        <toolbox.components.Provider>
           <Expectations />
-        </toolbox.components.ProviderNamedContext>
+        </toolbox.components.Provider>
       )
 
       render(Component)
@@ -127,9 +127,9 @@ describe('createToolbox', () => {
       }
 
       const Component = (
-        <toolbox.components.ProviderNamedContext>
+        <toolbox.components.Provider>
           <Expectations />
-        </toolbox.components.ProviderNamedContext>
+        </toolbox.components.Provider>
       )
 
       render(Component)
@@ -147,9 +147,9 @@ describe('createToolbox', () => {
       }
 
       const Component = (
-        <toolbox.components.ProviderNamedContext>
+        <toolbox.components.Provider>
           <Expectations />
-        </toolbox.components.ProviderNamedContext>
+        </toolbox.components.Provider>
       )
 
       render(Component)
@@ -165,9 +165,9 @@ describe('createToolbox', () => {
       }
 
       const Component = (
-        <toolbox.components.ProviderNamedContext>
+        <toolbox.components.Provider>
           <Expectations />
-        </toolbox.components.ProviderNamedContext>
+        </toolbox.components.Provider>
       )
 
       render(Component)
@@ -177,9 +177,9 @@ describe('createToolbox', () => {
   describe('Context scoping', () => {
     it('should expose toolbox A in the context A', async () => {
       const Component = (
-        <ToolboxAComponents.ProviderNamedContext>
+        <ToolboxAComponents.Provider>
           <SayHelloA />
-        </ToolboxAComponents.ProviderNamedContext>
+        </ToolboxAComponents.Provider>
       )
 
       render(Component)
@@ -195,9 +195,9 @@ describe('createToolbox', () => {
 
     it('should expose toolbox B in the context B', async () => {
       const Component = (
-        <ToolboxBComponents.ProviderNamedContext>
+        <ToolboxBComponents.Provider>
           <SayHelloB />
-        </ToolboxBComponents.ProviderNamedContext>
+        </ToolboxBComponents.Provider>
       )
 
       render(Component)
@@ -213,9 +213,9 @@ describe('createToolbox', () => {
 
     it('should expose toolbox C in the context C', async () => {
       const Component = (
-        <ToolboxCComponents.ProviderNamedContext>
+        <ToolboxCComponents.Provider>
           <SayHelloC />
-        </ToolboxCComponents.ProviderNamedContext>
+        </ToolboxCComponents.Provider>
       )
 
       render(Component)
@@ -231,15 +231,15 @@ describe('createToolbox', () => {
 
     it('should expose all toolboxes when used in all contexts', async () => {
       const Component = (
-        <ToolboxCComponents.ProviderNamedContext>
-          <ToolboxAComponents.ProviderNamedContext>
-            <ToolboxBComponents.ProviderNamedContext>
+        <ToolboxCComponents.Provider>
+          <ToolboxAComponents.Provider>
+            <ToolboxBComponents.Provider>
               <SayHelloA />
               <SayHelloB />
               <SayHelloC />
-            </ToolboxBComponents.ProviderNamedContext>
-          </ToolboxAComponents.ProviderNamedContext>
-        </ToolboxCComponents.ProviderNamedContext>
+            </ToolboxBComponents.Provider>
+          </ToolboxAComponents.Provider>
+        </ToolboxCComponents.Provider>
       )
 
       render(Component)
