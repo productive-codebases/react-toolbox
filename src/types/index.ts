@@ -47,7 +47,7 @@ export type Toolbox<TConfiguration extends IConfiguration> = {
   name: string
   configuration: Configuration<TConfiguration>
   components: {
-    ProviderNamedContext: INamedContext<
+    Provider: INamedContext<
       IProviderValue<TConfiguration>
     >['ProviderNamedContext']
     ContainerFlex: ReturnType<typeof configureContainerFlex<TConfiguration>>

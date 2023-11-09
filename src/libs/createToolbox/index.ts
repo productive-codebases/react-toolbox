@@ -27,7 +27,7 @@ export function createToolbox<TConfiguration extends IConfiguration>(
     name,
     configuration: configuration ?? createConfiguration(),
     components: {
-      ProviderNamedContext: namedContext.ProviderNamedContext,
+      Provider: namedContext.ProviderNamedContext,
       ContainerFlex: configureContainerFlex(namedContext),
       Portal: configurePortal(namedContext),
       PortalPlaceHolder: configurePortalPlaceHolder(namedContext)
