@@ -1,7 +1,8 @@
 # Changelog
 
-## v0.2.1-beta
+## v0.3.0
 
+- :warning: Breaking change: Rename `ProviderNamedContext` to `Provider`.
 - Try `interop: 'compat'` option to fix issues related to `export default` when used in CJS environments (Jest).
 Typically those kind of errors: `Er.div is not a function`.
 
