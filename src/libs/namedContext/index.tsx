@@ -48,6 +48,14 @@ export function createNamedContext<TContextValue>(
    * Return the named context.
    */
   function useNamedContext<TContextValue>() {
+    const contextValue = useContext(context)
+
+    if (!contextValue) {
+      throw new Error(
+        'The context value is not defined. Do you have wrap your code with <toobox.components.Provider /> ?'
+      )
+    }
+
     return useContext(context) as TContextValue
   }
 
